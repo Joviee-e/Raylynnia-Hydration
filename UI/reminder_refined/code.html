@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@300;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#596064",
+                    "on-tertiary-container": "#324166",
+                    "tertiary-container": "#bac8f5",
+                    "on-tertiary-fixed-variant": "#3b4a6f",
+                    "on-surface": "#2c3437",
+                    "secondary-container": "#d7e5ec",
+                    "on-error": "#fff7f6",
+                    "primary-container": "#c5e8f8",
+                    "surface-variant": "#dce4e8",
+                    "surface-tint": "#436471",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#eaeff2",
+                    "inverse-primary": "#c8ebfb",
+                    "on-secondary": "#f2faff",
+                    "tertiary-fixed-dim": "#acbbe6",
+                    "secondary-dim": "#48555b",
+                    "surface-container-low": "#f0f4f7",
+                    "outline-variant": "#acb3b7",
+                    "on-background": "#2c3437",
+                    "tertiary-fixed": "#bac8f5",
+                    "on-error-container": "#6e0a12",
+                    "secondary-fixed-dim": "#c9d7de",
+                    "background": "#f7f9fb",
+                    "on-tertiary": "#f9f8ff",
+                    "surface-bright": "#f7f9fb",
+                    "primary-fixed": "#c5e8f8",
+                    "primary-dim": "#375765",
+                    "secondary": "#546167",
+                    "error-dim": "#67040d",
+                    "on-primary-fixed": "#224351",
+                    "inverse-surface": "#0b0f10",
+                    "on-secondary-fixed": "#344147",
+                    "surface-container-highest": "#dce4e8",
+                    "inverse-on-surface": "#9a9d9f",
+                    "primary": "#436471",
+                    "on-tertiary-fixed": "#1e2d50",
+                    "outline": "#747c80",
+                    "surface-container-high": "#e3e9ed",
+                    "surface-dim": "#d4dbdf",
+                    "on-primary": "#f2faff",
+                    "error-container": "#fa746f",
+                    "on-secondary-fixed-variant": "#505e64",
+                    "secondary-fixed": "#d7e5ec",
+                    "primary-fixed-dim": "#b7daea",
+                    "error": "#a83836",
+                    "tertiary": "#505e85",
+                    "on-secondary-container": "#46545a",
+                    "on-primary-container": "#365664",
+                    "surface": "#f7f9fb",
+                    "on-primary-fixed-variant": "#3f606e",
+                    "tertiary-dim": "#445278"
+            },
+            "borderRadius": {
+                    "DEFAULT": "8px",
+                    "lg": "8px",
+                    "xl": "8px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+      }
+      
+      @keyframes soft-pulse {
+        0% { box-shadow: 0 0 0 0 rgba(67, 100, 113, 0.4); }
+        70% { box-shadow: 0 0 0 15px rgba(67, 100, 113, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(67, 100, 113, 0); }
+      }
+      .animate-soft-pulse {
+        animation: soft-pulse 3s infinite;
+      }
+
+      @keyframes slide-up-fade {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-slide-up-fade {
+        animation: slide-up-fade 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+
+      .press-effect:active {
+        transform: scale(0.96);
+        transition: transform 0.1s ease;
+      }
+
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased overflow-hidden">
+<!-- Fluid Sanctuary: Main Layout Shell -->
+<main class="relative h-screen w-full flex flex-col items-center justify-center px-6 overflow-hidden">
+<!-- Background Layering -->
+<div class="absolute inset-0 z-0 bg-gradient-to-b from-surface via-surface-container-low to-primary-container/10"></div>
+<!-- Atmospheric Depth Overlay -->
+<div class="absolute bottom-0 left-0 w-full h-[353px] bg-tertiary-fixed-dim/5 blur-[120px] rounded-[100%] translate-y-1/2"></div>
+<!-- Focused Content Canvas -->
+<div class="relative z-10 flex flex-col items-center text-center max-w-md w-full">
+<!-- Soft Droplet Icon -->
+<div class="mb-16 flex items-center justify-center w-24 h-24 rounded-full bg-primary-container text-primary shadow-sm animate-slide-up-fade" style="animation-delay: 0.1s;">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<!-- Gentle Bloom Headline with Increased Whitespace -->
+<div class="mb-12 animate-slide-up-fade" style="animation-delay: 0.2s;">
+<h1 class="font-headline text-5xl md:text-6xl font-light text-on-surface tracking-tight leading-tight mb-6">
+                    Time to <span class="font-semibold text-primary">Hydrate</span>
+</h1>
+<p class="text-on-surface-variant font-label tracking-[0.2em] text-[10px] uppercase opacity-70">
+                    A restorative moment for your body
+                </p>
+</div>
+<!-- Action Cluster -->
+<div class="flex flex-col gap-4 w-full px-8 animate-slide-up-fade" style="animation-delay: 0.3s;">
+<!-- Primary Action -->
+<button class="press-effect animate-soft-pulse group relative w-full h-16 rounded-full bg-primary text-on-primary font-body font-medium text-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
+<span class="relative z-10">Drank Water</span>
+</button>
+<!-- Secondary Action -->
+<button class="press-effect w-full h-16 rounded-full bg-secondary-container/50 text-on-secondary-container font-body font-medium text-lg hover:bg-secondary-container transition-all duration-300">
+                    Snooze 10m
+                </button>
+</div>
+<!-- Subtle Motivational Subtext -->
+<div class="mt-28 opacity-40 animate-slide-up-fade" style="animation-delay: 0.4s;">
+<p class="text-sm font-label italic">Your goal today is 2,500ml</p>
+</div>
+</div>
+</main>
+<!-- Decorative Bottom Gradient for Depth -->
+<div class="fixed bottom-0 left-0 w-full h-32 pointer-events-none bg-gradient-to-t from-background to-transparent z-20"></div>
+</body></html>

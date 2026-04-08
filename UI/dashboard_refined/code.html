@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Raylynnia Hydration</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#365664",
+                        "primary-fixed": "#c5e8f8",
+                        "error": "#a83836",
+                        "on-secondary-fixed-variant": "#505e64",
+                        "surface-tint": "#436471",
+                        "on-secondary-container": "#46545a",
+                        "background": "#f7f9fb",
+                        "surface-container": "#eaeff2",
+                        "primary-dim": "#375765",
+                        "on-surface-variant": "#596064",
+                        "tertiary-fixed-dim": "#acbbe6",
+                        "on-tertiary-fixed": "#1e2d50",
+                        "error-container": "#fa746f",
+                        "on-tertiary-container": "#324166",
+                        "tertiary-dim": "#445278",
+                        "on-tertiary-fixed-variant": "#3b4a6f",
+                        "secondary-fixed": "#d7e5ec",
+                        "tertiary": "#505e85",
+                        "surface-container-high": "#e3e9ed",
+                        "surface-dim": "#d4dbdf",
+                        "surface-variant": "#dce4e8",
+                        "primary-fixed-dim": "#b7daea",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#bac8f5",
+                        "outline-variant": "#acb3b7",
+                        "on-background": "#2c3437",
+                        "on-secondary-fixed": "#344147",
+                        "on-error": "#fff7f6",
+                        "secondary": "#546167",
+                        "outline": "#747c80",
+                        "inverse-on-surface": "#9a9d9f",
+                        "surface-container-low": "#f0f4f7",
+                        "on-secondary": "#f2faff",
+                        "on-primary-fixed": "#224351",
+                        "surface": "#f7f9fb",
+                        "error-dim": "#67040d",
+                        "secondary-fixed-dim": "#c9d7de",
+                        "surface-container-highest": "#dce4e8",
+                        "secondary-dim": "#48555b",
+                        "inverse-surface": "#0b0f10",
+                        "inverse-primary": "#c8ebfb",
+                        "on-tertiary": "#f9f8ff",
+                        "on-primary": "#f2faff",
+                        "on-error-container": "#6e0a12",
+                        "primary-container": "#c5e8f8",
+                        "primary": "#436471",
+                        "on-surface": "#2c3437",
+                        "tertiary-container": "#bac8f5",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary-fixed-variant": "#3f606e",
+                        "secondary-container": "#d7e5ec"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        
+        @keyframes fill-up {
+            from { height: 0%; }
+            to { height: 64%; }
+        }
+
+        .fluid-wave {
+            background: linear-gradient(180deg, rgba(172, 187, 230, 0.4) 0%, rgba(197, 232, 248, 0.6) 100%);
+            mask-image: radial-gradient(circle at center, black 100%, transparent 100%);
+            animation: fill-up 2.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.3);
+        }
+
+        .tap-scale {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tap-scale:active {
+            transform: scale(0.96);
+        }
+
+        .ripple-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-effect 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-effect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        @keyframes toast-up {
+            0% { transform: translateY(10px); opacity: 0; }
+            20% { transform: translateY(0); opacity: 1; }
+            80% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-10px); opacity: 0; }
+        }
+
+        .feedback-toast {
+            animation: toast-up 2s ease-in-out forwards;
+        }
+    </style>
+<script>
+        function handleQuickAdd(amount, event) {
+            const btn = event.currentTarget;
+            
+            // Create ripple
+            const ripple = document.createElement('div');
+            ripple.classList.add('ripple');
+            const rect = btn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${event.clientX - rect.left - size/2}px`;
+            ripple.style.top = `${event.clientY - rect.top - size/2}px`;
+            btn.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+
+            // Show feedback toast
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-24 left-1/2 -translate-x-1/2 bg-on-background/90 text-white px-4 py-2 rounded-full text-xs font-label tracking-widest uppercase feedback-toast z-50';
+            toast.textContent = `+${amount}ml added`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container min-h-[884px]">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-3xl shadow-sm shadow-slate-200/20 flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high ring-1 ring-black/5">
+<img alt="User profile photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC8X-ablR8xucJ7PrI0Xy_WJH1UFRR5EPEmobdUbdhEIHShs1Yf-VSoDMDqu3SlELL_Z29pEOsMnmVYxZCWk1Oc30DwU4KkSKop1wXH5DKe7ByeXw1y-LZ-mw9-f0D9MQ5-D15jQYyQbTFCdXgZYIXaHAsz8d1ZlTM9kIhDkF533Pfz2mIa7e7VS5wdChYGfuBKWfVc2ne-7xb8Hc7NWCdYdO9Mswg6iH3r10UC832WsCh955oICiaQeiPFpoNbzdjiKEs1Dd2J9rZ"/>
+</div>
+<div class="hidden md:block">
+<span class="text-[10px] uppercase tracking-widest text-slate-400 font-medium font-label">Welcome back</span>
+<p class="text-sm font-semibold text-slate-700">Alex</p>
+</div>
+</div>
+<div class="font-headline text-2xl font-semibold tracking-widest text-slate-800">Raylynnia</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-slate-900 font-label tracking-wide text-sm font-medium" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-primary transition-colors duration-300 font-label tracking-wide text-sm" href="#">Schedule</a>
+<a class="text-slate-400 hover:text-primary transition-colors duration-300 font-label tracking-wide text-sm" href="#">History</a>
+</nav>
+<button class="material-symbols-outlined text-slate-700 hover:opacity-70 transition-opacity" data-icon="notifications">notifications</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-4xl mx-auto min-h-screen flex flex-col items-center">
+<!-- Centerpiece: Fluid Hydration Ring -->
+<section class="w-full flex flex-col items-center py-12 relative">
+<div class="relative w-72 h-72 md:w-80 md:h-80 flex items-center justify-center">
+<!-- Outer Ring -->
+<div class="absolute inset-0 rounded-full border-[1px] border-surface-container-high shadow-[inset_0_0_40px_rgba(0,0,0,0.02)]"></div>
+<!-- Progress Background Track -->
+<div class="absolute inset-4 rounded-full border-[10px] border-surface-container-low/50"></div>
+<!-- Fluid Fill Emulation -->
+<div class="absolute inset-[14px] rounded-full overflow-hidden flex items-end">
+<div class="w-full fluid-wave"></div>
+</div>
+<!-- Glass Content -->
+<div class="z-10 text-center">
+<h1 class="font-headline text-6xl md:text-7xl font-bold tracking-tighter text-on-surface">64<span class="text-3xl font-light">%</span></h1>
+<p class="font-label text-[10px] uppercase tracking-[0.3em] text-outline mt-2">Daily Flux</p>
+</div>
+</div>
+<!-- Asymmetrical Morning Greeting -->
+<div class="w-full mt-12 md:px-12 text-center md:text-left">
+<h2 class="font-headline text-3xl md:text-4xl text-on-background font-light leading-tight">
+                    Your rhythm is <br/>
+<span class="font-bold text-primary">steady and clear</span>.
+                </h2>
+</div>
+</section>
+<!-- Goal Metrics -->
+<section class="w-full grid grid-cols-2 gap-px bg-outline-variant/10 rounded-xl overflow-hidden mt-8 shadow-sm">
+<div class="bg-surface-container-lowest p-8 flex flex-col gap-1">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">Current</span>
+<p class="font-headline text-3xl font-light text-on-surface">1,600<span class="text-lg ml-1 opacity-40">ml</span></p>
+</div>
+<div class="bg-surface-container-lowest p-8 flex flex-col gap-1">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">Target</span>
+<p class="font-headline text-3xl font-light text-on-surface">2,500<span class="text-lg ml-1 opacity-40">ml</span></p>
+</div>
+</section>
+<!-- Quick Add Buttons -->
+<section class="w-full mt-12 flex flex-col md:flex-row gap-4 items-center justify-center">
+<button class="ripple-container tap-scale w-full md:w-auto px-10 py-5 rounded-lg bg-gradient-to-b from-primary to-primary-dim text-on-primary font-label tracking-widest text-xs uppercase font-semibold flex items-center justify-center gap-3 shadow-md hover:shadow-lg transition-shadow" onclick="handleQuickAdd(250, event)">
+<span class="material-symbols-outlined text-lg" data-icon="water_drop">water_drop</span>
+                Add 250ml
+            </button>
+<button class="ripple-container tap-scale w-full md:w-auto px-10 py-5 rounded-lg bg-secondary-container text-on-secondary-container font-label tracking-widest text-xs uppercase font-semibold flex items-center justify-center gap-3 shadow-sm hover:shadow-md transition-shadow" onclick="handleQuickAdd(500, event)">
+<span class="material-symbols-outlined text-lg" data-icon="opacity">opacity</span>
+                Add 500ml
+            </button>
+</section>
+<!-- Footer Reminder -->
+<footer class="mt-16 text-center space-y-4">
+<div class="inline-flex items-center gap-4 bg-surface-container-low px-6 py-3 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="schedule">schedule</span>
+<span class="font-label text-xs tracking-wide text-on-surface-variant">Next sip in <span class="font-bold text-on-surface ml-1">10 min</span></span>
+</div>
+<p class="font-label text-[11px] text-outline-variant tracking-wider max-w-xs mx-auto">Maintain your sanctuary by sipping mindfully throughout the morning.</p>
+</footer>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-white/70 backdrop-blur-3xl shadow-[0_-12px_32px_0_rgba(44,52,55,0.04)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-sky-100 text-sky-900 rounded-lg px-5 py-2 tap-scale" href="#">
+<span class="material-symbols-outlined" data-icon="water_drop" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-medium mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-5 py-2 hover:text-sky-600 transition-colors tap-scale" href="#">
+<span class="material-symbols-outlined" data-icon="access_time">access_time</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-medium mt-1">Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-5 py-2 hover:text-sky-600 transition-colors tap-scale" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-medium mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-5 py-2 hover:text-sky-600 transition-colors tap-scale" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-medium mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

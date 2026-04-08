@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Raylynnia - Describe Your Rhythm</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@200;300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#365664",
+                      "primary-fixed": "#c5e8f8",
+                      "error": "#a83836",
+                      "on-secondary-fixed-variant": "#505e64",
+                      "surface-tint": "#436471",
+                      "on-secondary-container": "#46545a",
+                      "background": "#f7f9fb",
+                      "surface-container": "#eaeff2",
+                      "primary-dim": "#375765",
+                      "on-surface-variant": "#596064",
+                      "tertiary-fixed-dim": "#acbbe6",
+                      "on-tertiary-fixed": "#1e2d50",
+                      "error-container": "#fa746f",
+                      "on-tertiary-container": "#324166",
+                      "tertiary-dim": "#445278",
+                      "on-tertiary-fixed-variant": "#3b4a6f",
+                      "secondary-fixed": "#d7e5ec",
+                      "tertiary": "#505e85",
+                      "surface-container-high": "#e3e9ed",
+                      "surface-dim": "#d4dbdf",
+                      "surface-variant": "#dce4e8",
+                      "primary-fixed-dim": "#b7daea",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed": "#bac8f5",
+                      "outline-variant": "#acb3b7",
+                      "on-background": "#2c3437",
+                      "on-secondary-fixed": "#344147",
+                      "on-error": "#fff7f6",
+                      "secondary": "#546167",
+                      "outline": "#747c80",
+                      "inverse-on-surface": "#9a9d9f",
+                      "surface-container-low": "#f0f4f7",
+                      "on-secondary": "#f2faff",
+                      "on-primary-fixed": "#224351",
+                      "surface": "#f7f9fb",
+                      "error-dim": "#67040d",
+                      "secondary-fixed-dim": "#c9d7de",
+                      "surface-container-highest": "#dce4e8",
+                      "secondary-dim": "#48555b",
+                      "inverse-surface": "#0b0f10",
+                      "inverse-primary": "#c8ebfb",
+                      "on-tertiary": "#f9f8ff",
+                      "on-primary": "#f2faff",
+                      "on-error-container": "#6e0a12",
+                      "primary-container": "#c5e8f8",
+                      "primary": "#436471",
+                      "on-surface": "#2c3437",
+                      "tertiary-container": "#bac8f5",
+                      "surface-bright": "#f7f9fb",
+                      "on-primary-fixed-variant": "#3f606e",
+                      "secondary-container": "#d7e5ec"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": [
+                              "Manrope"
+                      ],
+                      "body": [
+                              "Inter"
+                      ],
+                      "label": [
+                              "Inter"
+                      ]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .bloom {
+            transition: all 500ms ease-out;
+        }
+        .bloom:active {
+            transform: scale(0.98);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body min-h-screen selection:bg-primary-container">
+<!-- TopAppBar -->
+<header class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-3xl fixed top-0 w-full z-50 shadow-sm shadow-slate-200/20 dark:shadow-none flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-sm">water_drop</span>
+</div>
+<span class="font-manrope text-2xl font-semibold tracking-widest text-slate-800 dark:text-slate-100">Raylynnia</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="Portrait of a serene woman with a soft smile in minimalist clothing, natural lighting, high-end editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChuSXSgwXvJsFxv87C14aY9LPDkec-aVAT6SYbIKcY7tbetC1t_ja6imtx2FLdOyfYJAelIqC3lX9lnyXEmK1fM3Jg4_Ix7BRQ_3zdOg0Td3OQN1nowe_B02n12tiavSgqXIysq0P2PyXjBbCgdQKVhConUzDZethfT4v-5Li6_pIg3oMQNWunIt9XZuB4YbQSBZgxcxzvYXDlaFx5Y6mfnMFK2U1trAYRQ9EdfzGDkR8Q8E9ehHKIbhVQ9_-MdVsFBBZdjNbTF8IZ"/>
+</div>
+</header>
+<main class="pt-28 pb-32 px-6 max-w-4xl mx-auto flex flex-col min-h-screen">
+<!-- Header Section -->
+<section class="mb-12">
+<span class="font-label text-[10px] uppercase tracking-[0.3em] text-primary/60 mb-4 block">Lifestyle Selection</span>
+<h1 class="font-headline text-4xl md:text-5xl font-light tracking-tight text-on-surface leading-tight">
+                Describe your <br/>
+<span class="font-bold">rhythm.</span>
+</h1>
+<p class="text-on-surface-variant mt-4 max-w-xs font-light leading-relaxed">
+                Choose the flow that best captures your typical hydration journey.
+            </p>
+</section>
+<!-- Selection Cards (Bento Style Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+<!-- Weekday Focus Card -->
+<button class="bloom group relative flex flex-col text-left p-8 rounded-[32px] bg-surface-container-lowest overflow-hidden transition-all duration-500 hover:shadow-[0_12px_32px_0_rgba(44,52,55,0.04)] ring-1 ring-inset ring-outline-variant/10">
+<div class="absolute top-0 right-0 w-48 h-48 -mr-12 -mt-12 bg-primary-container/20 rounded-full blur-3xl group-hover:bg-primary-container/40 transition-colors duration-700"></div>
+<div class="mb-12 w-14 h-14 rounded-2xl bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-3xl">laptop_mac</span>
+</div>
+<div class="mt-auto">
+<h3 class="font-headline text-2xl font-semibold text-on-surface mb-2">Weekday Focus</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                        Structured, high-efficiency routine centered around productivity and consistent replenishment.
+                    </p>
+<div class="flex items-center gap-2 text-primary font-medium text-sm">
+<span>Select Rhythm</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</div>
+</div>
+</button>
+<!-- Weekend Flow Card -->
+<button class="bloom group relative flex flex-col text-left p-8 rounded-[32px] bg-surface-container-low overflow-hidden transition-all duration-500 hover:shadow-[0_12px_32px_0_rgba(44,52,55,0.04)] ring-1 ring-inset ring-outline-variant/10">
+<div class="absolute bottom-0 left-0 w-48 h-48 -ml-12 -mb-12 bg-tertiary-fixed/10 rounded-full blur-3xl group-hover:bg-tertiary-fixed/30 transition-colors duration-700"></div>
+<div class="mb-12 w-14 h-14 rounded-2xl bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container text-3xl">forest</span>
+</div>
+<div class="mt-auto">
+<h3 class="font-headline text-2xl font-semibold text-on-surface mb-2">Weekend Flow</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                        An organic, slower-paced approach focused on restoration, movement, and intuitive hydration.
+                    </p>
+<div class="flex items-center gap-2 text-tertiary font-medium text-sm">
+<span>Select Rhythm</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</div>
+</div>
+</button>
+</div>
+<!-- Illustration / Mood Area -->
+<div class="mt-12 w-full rounded-[40px] h-64 overflow-hidden relative">
+<img alt="Lifestyle Mood" class="w-full h-full object-cover grayscale-[20%] brightness-110" data-alt="Minimalist sun-drenched apartment interior with a tall glass of water on a wooden table next to a green plant, soft shadows, airy atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgeEtMpP-WMfm6ADsKpAlQtkkc2BSeQQzl5LTuUcOFZHEFJMdz4oKinx5n8DbWQWywt0HIYKVvwIZX2oO4ioql-1HGcLU_vybI6zJ31rdF9cWvsCrRVtvDkMTM-P02S8rfmbz2uUuc5P2lI0m2PNvW2jzqcoowAvtPSBWoFN0d9BT9ZQSVVFZBzJuFPiIyacZ1m39WXRT2_0wmpALu_PMQEkQg1uWyVbMzhRePfEySKqLnpXjqj6E0lNPEZ_KKjLX8ff3P_Mtxl03P"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+<div class="absolute bottom-6 left-8">
+<p class="font-manrope text-on-surface font-light italic text-lg">"Hydration is the rhythm of life."</p>
+</div>
+</div>
+<!-- Next Button Container -->
+<div class="fixed bottom-0 left-0 w-full px-6 py-8 md:px-12 flex justify-center pointer-events-none">
+<button class="pointer-events-auto bloom bg-gradient-to-r from-primary to-primary-dim text-on-primary px-12 py-5 rounded-full shadow-lg shadow-primary/20 flex items-center gap-3 transition-transform hover:scale-[1.02]">
+<span class="font-manrope font-semibold tracking-wide">Continue to Ritual</span>
+<span class="material-symbols-outlined">trending_flat</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar (Suppressed for focused selection flow as per instructions, but kept as reference for shell structure) -->
+<!-- Not rendered to prioritize the Canvas as per "UX Goal" in the Blueprint -->
+<!-- Spacer for floating button -->
+<div class="h-24"></div>
+</body></html>

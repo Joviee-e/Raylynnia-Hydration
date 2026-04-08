@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#365664",
+                    "primary-fixed": "#c5e8f8",
+                    "error": "#a83836",
+                    "on-secondary-fixed-variant": "#505e64",
+                    "surface-tint": "#436471",
+                    "on-secondary-container": "#46545a",
+                    "background": "#f7f9fb",
+                    "surface-container": "#eaeff2",
+                    "primary-dim": "#375765",
+                    "on-surface-variant": "#596064",
+                    "tertiary-fixed-dim": "#acbbe6",
+                    "on-tertiary-fixed": "#1e2d50",
+                    "error-container": "#fa746f",
+                    "on-tertiary-container": "#324166",
+                    "tertiary-dim": "#445278",
+                    "on-tertiary-fixed-variant": "#3b4a6f",
+                    "secondary-fixed": "#d7e5ec",
+                    "tertiary": "#505e85",
+                    "surface-container-high": "#e3e9ed",
+                    "surface-dim": "#d4dbdf",
+                    "surface-variant": "#dce4e8",
+                    "primary-fixed-dim": "#b7daea",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#bac8f5",
+                    "outline-variant": "#acb3b7",
+                    "on-background": "#2c3437",
+                    "on-secondary-fixed": "#344147",
+                    "on-error": "#fff7f6",
+                    "secondary": "#546167",
+                    "outline": "#747c80",
+                    "inverse-on-surface": "#9a9d9f",
+                    "surface-container-low": "#f0f4f7",
+                    "on-secondary": "#f2faff",
+                    "on-primary-fixed": "#224351",
+                    "surface": "#f7f9fb",
+                    "error-dim": "#67040d",
+                    "secondary-fixed-dim": "#c9d7de",
+                    "surface-container-highest": "#dce4e8",
+                    "secondary-dim": "#48555b",
+                    "inverse-surface": "#0b0f10",
+                    "inverse-primary": "#c8ebfb",
+                    "on-tertiary": "#f9f8ff",
+                    "on-primary": "#f2faff",
+                    "on-error-container": "#6e0a12",
+                    "primary-container": "#c5e8f8",
+                    "primary": "#436471",
+                    "on-surface": "#2c3437",
+                    "tertiary-container": "#bac8f5",
+                    "surface-bright": "#f7f9fb",
+                    "on-primary-fixed-variant": "#3f606e",
+                    "secondary-container": "#d7e5ec"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-bloom {
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .bloom { transition: all 300ms ease-out; }
+        .bloom:active { transform: scale(0.96); opacity: 0.95; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-3xl shadow-sm shadow-slate-200/20 flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-dim" data-icon="water_full">water_full</span>
+<h1 class="font-headline text-2xl font-semibold tracking-tight text-slate-800 dark:text-slate-100">Raylynnia</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high transition-opacity duration-500 hover:opacity-80">
+<img alt="User profile photo" data-alt="Close up portrait of a calm woman with natural lighting and soft background, serene expression, high-end editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcYOJVs4my7_4gjPI3m7USsVBNMJ3vyPLuq9C_KjuQyjgXOuvqucmt3aF6azj_3meNMn55UUed6iBbM_pLZtIbTP-ZwIWQ4Jp5S0ttgJwdCxXDltemcKReiheFW8yxVemRH7srWGrknR26raG3HfchpmXv4dgIi0SLgUFmm73pDgKuZjkFswTfEIiW3bxR_3xbfOQVOAlR4YIkm_9n16_T6LUivn2nnirt8-fOzMrnwTy3xx6NnLQm19aHnzZ8A9Q8hPvkdqxqXysU"/>
+</div>
+</header>
+<main class="min-h-screen pt-24 pb-32 px-6 flex flex-col items-center justify-center max-w-lg mx-auto">
+<!-- Hero Branding / Context -->
+<div class="w-full mb-12 text-center animate-bloom">
+<h2 class="font-headline text-4xl font-light tracking-tight text-on-background mb-4">Set your rhythm</h2>
+<p class="font-body text-on-surface-variant max-w-xs mx-auto leading-relaxed text-sm">Align your hydration window with your natural waking and resting cycles.</p>
+</div>
+<!-- Time Picker Bento-ish Grid -->
+<div class="w-full space-y-6">
+<!-- Wake Up Section -->
+<div class="surface-container-lowest bg-surface-container-lowest rounded-[32px] p-8 flex flex-col items-center justify-center relative overflow-hidden group shadow-sm border border-black/5 animate-bloom" style="animation-delay: 0.1s;">
+<div class="absolute inset-0 bg-primary-container/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="light_mode">light_mode</span>
+<span class="font-headline text-xs font-bold uppercase tracking-[0.2em] text-outline mb-8">Wake up</span>
+<!-- Large Custom Time Picker Simulation -->
+<div class="flex items-center gap-6 relative">
+<div class="flex flex-col items-center">
+<span class="text-slate-300 font-headline text-2xl font-light">06</span>
+<span class="text-on-background font-headline text-7xl font-bold tracking-tighter">07</span>
+<span class="text-slate-300 font-headline text-2xl font-light">08</span>
+</div>
+<span class="text-on-background font-headline text-4xl font-light mt-4">:</span>
+<div class="flex flex-col items-center">
+<span class="text-slate-300 font-headline text-2xl font-light">15</span>
+<span class="text-on-background font-headline text-7xl font-bold tracking-tighter">30</span>
+<span class="text-slate-300 font-headline text-2xl font-light">45</span>
+</div>
+<div class="flex flex-col ml-2 self-center">
+<span class="text-primary-dim font-headline text-xl font-bold tracking-widest">AM</span>
+</div>
+</div>
+</div>
+<!-- Sleep Section -->
+<div class="surface-container-low bg-surface-container-low rounded-[32px] p-8 flex flex-col items-center justify-center relative overflow-hidden group shadow-sm border border-black/5 animate-bloom" style="animation-delay: 0.2s;">
+<div class="absolute inset-0 bg-tertiary-container/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<span class="material-symbols-outlined text-tertiary text-3xl mb-4" data-icon="dark_mode">dark_mode</span>
+<span class="font-headline text-xs font-bold uppercase tracking-[0.2em] text-outline mb-8">Sleep</span>
+<!-- Large Custom Time Picker Simulation -->
+<div class="flex items-center gap-6 relative">
+<div class="flex flex-col items-center">
+<span class="text-slate-300 font-headline text-2xl font-light">09</span>
+<span class="text-on-background font-headline text-7xl font-bold tracking-tighter">10</span>
+<span class="text-slate-300 font-headline text-2xl font-light">11</span>
+</div>
+<span class="text-on-background font-headline text-4xl font-light mt-4">:</span>
+<div class="flex flex-col items-center">
+<span class="text-slate-300 font-headline text-2xl font-light">00</span>
+<span class="text-on-background font-headline text-7xl font-bold tracking-tighter">15</span>
+<span class="text-slate-300 font-headline text-2xl font-light">30</span>
+</div>
+<div class="flex flex-col ml-2 self-center">
+<span class="text-tertiary font-headline text-xl font-bold tracking-widest">PM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dynamic Visualization Component -->
+<div class="w-full mt-12 p-6 surface-container-highest bg-surface-container-highest rounded-2xl flex items-center justify-between gap-4 animate-bloom" style="animation-delay: 0.3s;">
+<div class="flex flex-col">
+<h3 class="font-headline text-base font-bold text-on-surface">Hydration Window</h3>
+<p class="font-body text-xs text-on-surface-variant">Your ideal window is 14 hours 45 mins.</p>
+</div>
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-highest bg-primary-fixed-dim flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-primary-fixed text-xs" data-icon="coffee">coffee</span>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-highest bg-tertiary-fixed-dim flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-xs" data-icon="bedtime">bedtime</span>
+</div>
+</div>
+</div>
+<!-- Complete CTA -->
+<div class="fixed bottom-12 left-0 w-full px-6 flex justify-center z-50">
+<button class="bloom w-full max-w-md h-16 rounded-2xl bg-primary text-white font-headline text-lg font-medium tracking-wide shadow-xl shadow-primary/20 flex items-center justify-center gap-3">
+                Complete Setup
+                <span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- Ambient Decorative Elements -->
+<div class="fixed top-1/4 left-[-10%] w-[50%] h-[50%] bg-primary-container/15 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
+<div class="fixed bottom-0 right-[-10%] w-[40%] h-[40%] bg-tertiary-container/15 blur-[100px] rounded-full -z-10 pointer-events-none"></div>
+</body></html>

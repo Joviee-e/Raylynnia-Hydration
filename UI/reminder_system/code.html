@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#365664",
+                    "primary-fixed": "#c5e8f8",
+                    "error": "#a83836",
+                    "on-secondary-fixed-variant": "#505e64",
+                    "surface-tint": "#436471",
+                    "on-secondary-container": "#46545a",
+                    "background": "#f7f9fb",
+                    "surface-container": "#eaeff2",
+                    "primary-dim": "#375765",
+                    "on-surface-variant": "#596064",
+                    "tertiary-fixed-dim": "#acbbe6",
+                    "on-tertiary-fixed": "#1e2d50",
+                    "error-container": "#fa746f",
+                    "on-tertiary-container": "#324166",
+                    "tertiary-dim": "#445278",
+                    "on-tertiary-fixed-variant": "#3b4a6f",
+                    "secondary-fixed": "#d7e5ec",
+                    "tertiary": "#505e85",
+                    "surface-container-high": "#e3e9ed",
+                    "surface-dim": "#d4dbdf",
+                    "surface-variant": "#dce4e8",
+                    "primary-fixed-dim": "#b7daea",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#bac8f5",
+                    "outline-variant": "#acb3b7",
+                    "on-background": "#2c3437",
+                    "on-secondary-fixed": "#344147",
+                    "on-error": "#fff7f6",
+                    "secondary": "#546167",
+                    "outline": "#747c80",
+                    "inverse-on-surface": "#9a9d9f",
+                    "surface-container-low": "#f0f4f7",
+                    "on-secondary": "#f2faff",
+                    "on-primary-fixed": "#224351",
+                    "surface": "#f7f9fb",
+                    "error-dim": "#67040d",
+                    "secondary-fixed-dim": "#c9d7de",
+                    "surface-container-highest": "#dce4e8",
+                    "secondary-dim": "#48555b",
+                    "inverse-surface": "#0b0f10",
+                    "inverse-primary": "#c8ebfb",
+                    "on-tertiary": "#f9f8ff",
+                    "on-primary": "#f2faff",
+                    "on-error-container": "#6e0a12",
+                    "primary-container": "#c5e8f8",
+                    "primary": "#436471",
+                    "on-surface": "#2c3437",
+                    "tertiary-container": "#bac8f5",
+                    "surface-bright": "#f7f9fb",
+                    "on-primary-fixed-variant": "#3f606e",
+                    "secondary-container": "#d7e5ec"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .bloom {
+            transition: all 500ms ease-out;
+        }
+        .bloom:active {
+            transform: scale(0.98);
+        }
+        .glass-panel {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-3xl flex justify-between items-center px-6 py-4 w-full shadow-sm shadow-slate-200/20 dark:shadow-none">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Soft-lit portrait of a calm woman against a neutral architectural background, minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu0wO-hapwz7WOPjZrzyA-11TljdoG2o8EQ1qTD-l3Jw2aELthxnTy4-idGRrdJVFD_Qe_vxjn7fZr1KU9SRqcodGJbF7xAzzeOcp9ONHLNIv4OeQ0AuaZmgd13bGxOnIHZOwJUOSLLWYUaY1Y2G2NX13sfIcYP-yFwHuaJH3npGY0VhclCS6GFj3UTbE9q1-mPCYFmcZsjHnFI9_WPi_1w3QPnXnyh3r8yngkEkyyGvn9miwBBAydjzLIUV_9T-T-Suu5HkZG-ObY"/>
+</div>
+<span class="font-manrope text-2xl font-semibold tracking-widest text-slate-800 dark:text-slate-100">Raylynnia</span>
+</div>
+<div class="flex gap-6 items-center">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-200 cursor-pointer hover:opacity-80 transition-opacity duration-500">notifications</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto min-h-screen">
+<!-- Page Title: Editorial Header -->
+<section class="mb-12">
+<h1 class="font-headline text-5xl font-extralight tracking-tight text-on-surface mb-2">Reminders</h1>
+<p class="font-body text-on-surface-variant tracking-wide text-sm">Design your rhythmic hydration ritual.</p>
+</section>
+<!-- Global Toggle: Luminous Stillness Style -->
+<section class="mb-10 p-8 rounded-[40px] bg-surface-container-lowest flex items-center justify-between shadow-sm">
+<div>
+<h2 class="font-headline text-xl font-medium text-on-surface">Active Reminders</h2>
+<p class="text-sm text-on-surface-variant">Silent notifications for your wellness</p>
+</div>
+<button class="relative inline-flex h-10 w-20 shrink-0 cursor-pointer items-center rounded-full transition-colors duration-500 bg-primary-container focus:outline-none">
+<span class="translate-x-11 inline-block h-8 w-8 transform rounded-full bg-white shadow-lg transition duration-500 ease-in-out"></span>
+</button>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+<!-- Next Alert Card: Tonal Layering -->
+<div class="bg-primary-container/40 p-8 rounded-[40px] flex flex-col justify-between aspect-square md:aspect-auto">
+<div>
+<span class="material-symbols-outlined text-primary-dim mb-4" style="font-size: 32px;">alarm</span>
+<h3 class="font-headline text-sm font-semibold uppercase tracking-widest text-on-primary-container">Next Alert</h3>
+</div>
+<div>
+<div class="font-headline text-6xl font-light text-primary-dim mb-1">24<span class="text-3xl">:00</span></div>
+<p class="text-on-primary-container/70 text-sm">Minutes until next sip</p>
+</div>
+</div>
+<!-- Current Interval Card -->
+<div class="bg-surface-container-low p-8 rounded-[40px] flex flex-col justify-between border-none">
+<div>
+<span class="material-symbols-outlined text-secondary mb-4" style="font-size: 32px;">hourglass_empty</span>
+<h3 class="font-headline text-sm font-semibold uppercase tracking-widest text-secondary">Interval</h3>
+</div>
+<div>
+<div class="font-headline text-4xl font-light text-on-surface mb-2">45 Mins</div>
+<p class="text-on-surface-variant text-sm">Gentle rhythm selected</p>
+</div>
+<button class="mt-4 text-primary text-sm font-medium flex items-center gap-1 bloom hover:opacity-70">
+                    Modify <span class="material-symbols-outlined text-xs">edit</span>
+</button>
+</div>
+</div>
+<!-- Today's Schedule: Visual Preview -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-8 px-2">
+<h2 class="font-headline text-2xl font-light text-on-surface">Today's Schedule</h2>
+<span class="text-xs font-label uppercase tracking-widest text-on-surface-variant">8 Sessions Remaining</span>
+</div>
+<div class="space-y-4">
+<!-- Schedule Item 1 (Past) -->
+<div class="group flex items-center gap-6 p-6 rounded-[32px] bg-surface-container-high/30 transition-all duration-500">
+<div class="flex flex-col items-center">
+<span class="text-xs font-medium text-outline">08:00</span>
+<div class="w-px h-8 bg-outline-variant/30 my-1"></div>
+</div>
+<div class="flex-1 flex items-center justify-between">
+<div>
+<h4 class="font-headline text-lg font-medium text-on-surface/50">Morning Start</h4>
+<p class="text-xs text-on-surface-variant">250ml goal achieved</p>
+</div>
+<span class="material-symbols-outlined text-primary/40" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Schedule Item 2 (Active/Next) -->
+<div class="group flex items-center gap-6 p-6 rounded-[32px] bg-surface-container-lowest shadow-sm border-l-4 border-primary transition-all duration-500">
+<div class="flex flex-col items-center">
+<span class="text-xs font-bold text-primary">10:30</span>
+<div class="w-px h-8 bg-primary/20 my-1"></div>
+</div>
+<div class="flex-1 flex items-center justify-between">
+<div>
+<h4 class="font-headline text-lg font-medium text-on-surface">Mid-Morning Sip</h4>
+<p class="text-xs text-primary-dim">Upcoming in 24m</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">water_drop</span>
+</div>
+</div>
+</div>
+<!-- Schedule Item 3 (Future) -->
+<div class="group flex items-center gap-6 p-6 rounded-[32px] bg-surface-container-low transition-all duration-500">
+<div class="flex flex-col items-center">
+<span class="text-xs font-medium text-on-surface-variant">12:15</span>
+<div class="w-px h-8 bg-outline-variant/20 my-1"></div>
+</div>
+<div class="flex-1 flex items-center justify-between">
+<div>
+<h4 class="font-headline text-lg font-medium text-on-surface">Lunch Balance</h4>
+<p class="text-xs text-on-surface-variant">Post-meal hydration</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant">radio_button_unchecked</span>
+</div>
+</div>
+<!-- Schedule Item 4 (Future) -->
+<div class="group flex items-center gap-6 p-6 rounded-[32px] bg-surface-container-low transition-all duration-500">
+<div class="flex flex-col items-center">
+<span class="text-xs font-medium text-on-surface-variant">14:45</span>
+</div>
+<div class="flex-1 flex items-center justify-between">
+<div>
+<h4 class="font-headline text-lg font-medium text-on-surface">Afternoon Focus</h4>
+<p class="text-xs text-on-surface-variant">Mental clarity window</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant">radio_button_unchecked</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Signature Texture/Graphic -->
+<div class="w-full h-48 rounded-[48px] overflow-hidden relative mb-8">
+<img alt="Fluid background" class="w-full h-full object-cover" data-alt="Abstract macro photography of clear water ripples with soft blue and silver lighting, serene and high-end texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_wljo4D2CeTiYiuoywUD2V38JUohNncIEcrNn7TTJwOOPsEjxYUCaUnsl44UBsOlZ9BTruIV00Uod1Ur83iZd01M27rYWVgvNKV7Uz5HtvOJ-zyfde6nC5gY5OtnTO45Q6L8B8uVJXOLYaWQ76QxPJHyR4pSg0bnFkMxLOkFOlDgtoHUjdZAgz35pCj0GuYSNUTcy6QzVmZ8rBo30VWsyvxOpRkBlzXHZALaFt7UxIgb0z79JXMA4vHDSVb_7qeN7GLP-5X69Onsw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent"></div>
+<div class="absolute bottom-8 left-8">
+<p class="font-headline text-white text-xl font-light italic">"Water is the soul of the Earth."</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-white/70 dark:bg-slate-900/70 backdrop-blur-3xl shadow-[0_-12px_32px_0_rgba(44,52,55,0.04)] rounded-t-[32px]">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-sky-600 transition-colors duration-400" href="#">
+<span class="material-symbols-outlined">water_drop</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-medium mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-sky-100 dark:bg-sky-900/30 text-sky-900 dark:text-sky-100 rounded-full px-5 py-2 transition-transform duration-500" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">access_time</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-medium mt-1">Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-sky-600 transition-colors duration-400" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-medium mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-sky-600 transition-colors duration-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-medium mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

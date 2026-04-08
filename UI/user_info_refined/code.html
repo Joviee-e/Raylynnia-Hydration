@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Raylynnia Hydration - Onboarding</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Manrope:wght@200;300;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#365664",
+                      "primary-fixed": "#c5e8f8",
+                      "error": "#a83836",
+                      "on-secondary-fixed-variant": "#505e64",
+                      "surface-tint": "#436471",
+                      "on-secondary-container": "#46545a",
+                      "background": "#f7f9fb",
+                      "surface-container": "#eaeff2",
+                      "primary-dim": "#375765",
+                      "on-surface-variant": "#596064",
+                      "tertiary-fixed-dim": "#acbbe6",
+                      "on-tertiary-fixed": "#1e2d50",
+                      "error-container": "#fa746f",
+                      "on-tertiary-container": "#324166",
+                      "tertiary-dim": "#445278",
+                      "on-tertiary-fixed-variant": "#3b4a6f",
+                      "secondary-fixed": "#d7e5ec",
+                      "tertiary": "#505e85",
+                      "surface-container-high": "#e3e9ed",
+                      "surface-dim": "#d4dbdf",
+                      "surface-variant": "#dce4e8",
+                      "primary-fixed-dim": "#b7daea",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed": "#bac8f5",
+                      "outline-variant": "#acb3b7",
+                      "on-background": "#2c3437",
+                      "on-secondary-fixed": "#344147",
+                      "on-error": "#fff7f6",
+                      "secondary": "#546167",
+                      "outline": "#747c80",
+                      "inverse-on-surface": "#9a9d9f",
+                      "surface-container-low": "#f0f4f7",
+                      "on-secondary": "#f2faff",
+                      "on-primary-fixed": "#224351",
+                      "surface": "#f7f9fb",
+                      "error-dim": "#67040d",
+                      "secondary-fixed-dim": "#c9d7de",
+                      "surface-container-highest": "#dce4e8",
+                      "secondary-dim": "#48555b",
+                      "inverse-surface": "#0b0f10",
+                      "inverse-primary": "#c8ebfb",
+                      "on-tertiary": "#f9f8ff",
+                      "on-primary": "#f2faff",
+                      "on-error-container": "#6e0a12",
+                      "primary-container": "#c5e8f8",
+                      "primary": "#436471",
+                      "on-surface": "#2c3437",
+                      "tertiary-container": "#bac8f5",
+                      "surface-bright": "#f7f9fb",
+                      "on-primary-fixed-variant": "#3f606e",
+                      "secondary-container": "#d7e5ec"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.5rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              },
+              "animation": {
+                "slide-up": "slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+                "fade-in": "fade-in 1s ease-out forwards"
+              },
+              "keyframes": {
+                "slide-up": {
+                  "0%": { opacity: "0", transform: "translateY(20px)" },
+                  "100%": { opacity: "1", transform: "translateY(0)" }
+                },
+                "fade-in": {
+                  "0%": { opacity: "0" },
+                  "100%": { opacity: "1" }
+                }
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(247, 249, 251, 0.7);
+            backdrop-filter: blur(24px);
+        }
+        .input-focus-glow:focus-within {
+            box-shadow: 0 0 20px 2px rgba(67, 100, 113, 0.1);
+        }
+        .stagger-1 { animation-delay: 0.1s; opacity: 0; }
+        .stagger-2 { animation-delay: 0.2s; opacity: 0; }
+        .stagger-3 { animation-delay: 0.3s; opacity: 0; }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden">
+<!-- Top Navigation Anchor (Manual suppression logic applied for onboarding flow) -->
+<main class="min-h-screen flex flex-col items-center justify-center px-8 pb-32">
+<!-- Decorative Background Element (Fluid Sanctuary Aesthetic) -->
+<div class="fixed top-[-10%] right-[-5%] w-[600px] h-[600px] bg-primary-container/20 rounded-full blur-[120px] -z-10 animate-fade-in"></div>
+<div class="fixed bottom-[10%] left-[-10%] w-[400px] h-[400px] bg-tertiary-container/10 rounded-full blur-[100px] -z-10 animate-fade-in"></div>
+<div class="w-full max-w-xl flex flex-col space-y-24">
+<!-- Headline Section -->
+<header class="space-y-6 animate-slide-up stagger-1">
+<div class="flex justify-start">
+<span class="text-xs font-label uppercase tracking-[0.2em] text-primary-dim/60">Introduction</span>
+</div>
+<h1 class="font-headline text-5xl md:text-7xl font-medium tracking-tight text-on-surface leading-[1.1]">
+                    What should we <br/>
+<span class="font-semibold text-primary">call you?</span>
+</h1>
+</header>
+<!-- Input Section -->
+<div class="relative group animate-slide-up stagger-2">
+<div class="absolute -top-12 left-0">
+<label class="font-label text-sm text-outline tracking-wider uppercase" for="user-name">Your Name</label>
+</div>
+<!-- Large Minimal Input with Soft Shadow as per design system specs -->
+<div class="relative input-focus-glow transition-all duration-700">
+<input class="w-full bg-surface-container-highest border-none rounded-t-none rounded-b-sm px-0 py-8 text-4xl md:text-5xl font-headline font-light text-on-surface placeholder:text-outline-variant/40 focus:ring-0 focus:border-primary-dim transition-all duration-500 shadow-[0_12px_32px_0_rgba(44,52,55,0.04)]" id="user-name" placeholder="Enter name" type="text"/>
+<!-- Bottom line accent only, no box -->
+<div class="absolute bottom-0 left-0 w-full h-[1px] bg-outline-variant/30 group-focus-within:h-[2px] group-focus-within:bg-primary transition-all duration-500"></div>
+</div>
+<p class="mt-8 font-body font-light text-on-surface-variant/70 leading-relaxed max-w-sm">
+                    This is how Raylynnia will address you during your daily hydration rituals.
+                </p>
+</div>
+</div>
+<!-- Footer Action (Luminous Stillness Style) -->
+<footer class="fixed bottom-0 left-0 w-full p-8 md:p-12 flex justify-center items-center pointer-events-none animate-slide-up stagger-3">
+<div class="w-full max-w-xl flex justify-end pointer-events-auto">
+<button class="group flex items-center space-x-4 bg-gradient-to-r from-primary to-primary-dim text-on-primary px-10 py-6 rounded-full shadow-[0_12px_32px_0_rgba(44,52,55,0.08)] transition-all duration-500 ease-out hover:shadow-[0_16px_48px_0_rgba(44,52,55,0.12)] active:scale-90 active:duration-150">
+<span class="font-label uppercase tracking-widest text-sm font-semibold">Next</span>
+<span class="material-symbols-outlined text-xl transition-transform group-hover:translate-x-1 duration-500" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</footer>
+</main>
+<!-- Content Visual - Minimalist Illustration -->
+<div class="fixed right-0 top-1/2 -translate-y-1/2 hidden xl:block w-1/3 h-[618px] px-12 pointer-events-none animate-fade-in stagger-3">
+<div class="relative w-full h-full rounded-[48px] overflow-hidden shadow-sm shadow-slate-200/20">
+<img alt="Minimalist abstract visual of soft blue water ripples with light play and calm atmosphere" class="w-full h-full object-cover grayscale-[20%] opacity-80" data-alt="soft macro view of clean water ripples in a ceramic vessel with soft morning light and high end architectural shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSJmmrwofnrY1y0q1qj_INSQSHzCpXsc3sJ-NeZUWKUCK_L2Cc-ywZw4-dGEsBk0lW_aNzMCR5n7YhaYC_nlZniVH9QpoUIrMTHaLzuxMD4hlSw3bUjKJnR0_pURw3peJ-ik0DCCV9wF_lHnD1zCNt-xMctYB9ep4j_b-KuBkmUmK6DHhxDP8MaRxxr-YQrmQ8cSt5VG6kJZc2HBcwZp8aYaUl0SOIPJbRE1KLsClvT5peccurPTgfw4v8xfChUqc10ea6qdbTjfSb"/>
+<div class="absolute inset-0 bg-gradient-to-l from-surface via-transparent to-transparent"></div>
+</div>
+</div>
+</body></html>
