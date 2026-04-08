@@ -334,3 +334,53 @@ No full feature flows, advanced business logic, or data implementations are cons
 ### 5. Next Step Plan
 
 Proceed with the next instruction in strict phase order. The immediate next deliverable should expand Domain incrementally only within approved scope, with no feature/UI implementation beyond placeholder routing.
+
+## Phase 2 - Data Layer Foundation
+
+**Date:** April 9, 2026  
+**Status:** Complete
+
+### 1. What Was Implemented
+
+- Domain repository contracts were finalized for foundational data access:
+  - `IUserProfileRepository`
+  - `IHydrationLogRepository`
+- Data models (DTOs) were implemented with serialization methods:
+  - `UserProfileModel` (`fromJson` / `toJson`)
+  - `HydrationLogModel` (`fromJson` / `toJson`)
+  - `UserSchedulePreferencesModel` (`fromJson` / `toJson`)
+- Mapper layer was implemented:
+  - `UserProfileMapper`
+  - `HydrationLogMapper`
+  - `SchedulePreferencesMapper`
+- Local datasource abstractions and implementations were added:
+  - Interfaces: `IUserProfileLocalDataSource`, `IHydrationLogLocalDataSource`
+  - Implementations: `UserProfileLocalDataSource`, `HydrationLogLocalDataSource`
+- Repository implementations were added and wired through mapper + datasource boundaries:
+  - `UserProfileRepositoryImpl`
+  - `HydrationLogRepositoryImpl`
+- Dependencies for local persistence were added to `pubspec.yaml`:
+  - `shared_preferences`
+  - `hive`
+
+### 2. Why Separation Is Important
+
+This phase enforces dependency direction from the start: domain defines contracts, data implements them. The presentation layer remains isolated from storage concerns, which keeps business logic testable and prevents persistence decisions from leaking into UI workflows.
+
+### 3. Mapper Reasoning
+
+Mappers are explicit boundary objects between domain entities and storage DTOs. This avoids coupling domain types to JSON/storage formats and allows persistence changes (schema updates, storage migration, adapter changes) without forcing modifications in domain logic.
+
+### 4. Storage Decisions (Hive vs SharedPreferences)
+
+- `SharedPreferences` is used for `UserProfile` because profile payloads are small, key-value oriented, and read frequently at startup.
+- `Hive` is used for hydration logs because logs are append-heavy collections that naturally map to local boxed records.
+
+This split keeps the storage layer pragmatic and aligned with access patterns.
+
+### 5. What Remains
+
+- Wire concrete datasource instances into DI container.
+- Add error handling strategy (exceptions/failures mapping) in repositories.
+- Add tests for model serialization and mapper round-trip correctness.
+- Implement additional repositories/use cases in later approved phases only.
