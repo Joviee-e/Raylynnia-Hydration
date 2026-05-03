@@ -384,3 +384,35 @@ This split keeps the storage layer pragmatic and aligned with access patterns.
 - Add error handling strategy (exceptions/failures mapping) in repositories.
 - Add tests for model serialization and mapper round-trip correctness.
 - Implement additional repositories/use cases in later approved phases only.
+
+## Phase 3 - Scheduling + Notification Integration
+
+**Date:** May 3, 2026  
+**Status:** Complete
+
+### 1. What Was Implemented
+
+- Implemented full deterministic `SchedulingEngine` logic:
+  - buffered wake/sleep windows
+  - overnight sleep handling
+  - minimum reminder fallback
+  - midpoint fallback when interval exceeds active window
+- Added complete schedule domain flow:
+  - `ReminderSchedule` entity
+  - `ComputeReminderScheduleUseCase`
+  - `RescheduleAllNotificationsUseCase`
+  - `INotificationRepository` and `ISchedulingRepository` contracts
+- Implemented data layer for scheduling + notifications:
+  - `ScheduleLocalDataSource` (SharedPreferences-backed)
+  - `SchedulingRepositoryImpl`
+  - `NotificationManager` (initialize, permission request, cancel all, schedule all)
+  - `NotificationRepositoryImpl`
+- Added core constants for timing and notifications.
+- Wired Phase 3 dependencies in `core/di/injection_container.dart`.
+
+### 2. Testing Added
+
+- `test/unit/domain/services/scheduling_engine_test.dart`
+- `test/unit/domain/usecases/reschedule_all_notifications_usecase_test.dart`
+
+These tests verify schedule generation behavior and end-to-end reschedule orchestration through repository contracts.
