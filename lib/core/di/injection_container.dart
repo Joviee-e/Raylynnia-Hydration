@@ -3,14 +3,26 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/datasources/local/schedule_local_datasource.dart';
+import '../../data/datasources/local/user_profile_local_datasource.dart';
+import '../../data/datasources/local/hydration_log_local_datasource.dart';
 import '../../data/repositories/notification_repository_impl.dart';
 import '../../data/repositories/scheduling_repository_impl.dart';
+import '../../data/repositories/user_profile_repository_impl.dart';
+import '../../data/repositories/hydration_log_repository_impl.dart';
 import '../../data/services/notification_manager.dart';
 import '../../domain/repositories/i_notification_repository.dart';
 import '../../domain/repositories/i_scheduling_repository.dart';
+import '../../domain/repositories/i_user_profile_repository.dart';
+import '../../domain/repositories/i_hydration_log_repository.dart';
 import '../../domain/services/scheduling_engine.dart';
 import '../../domain/usecases/compute_reminder_schedule_usecase.dart';
 import '../../domain/usecases/reschedule_all_notifications_usecase.dart';
+import '../../domain/usecases/save_user_profile_usecase.dart';
+import '../../domain/usecases/get_user_profile_usecase.dart';
+import '../../domain/usecases/mark_onboarding_complete_usecase.dart';
+import '../../domain/usecases/log_hydration_intake_usecase.dart';
+import '../../domain/usecases/get_daily_history_usecase.dart';
+import '../../domain/usecases/get_weekly_progress_usecase.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -33,12 +45,26 @@ Future<void> setupDependencies() async {
     );
   }
 
+  // Data Sources
   if (!getIt.isRegistered<ScheduleLocalDataSource>()) {
     getIt.registerLazySingleton<ScheduleLocalDataSource>(
       () => ScheduleLocalDataSource(getIt<SharedPreferences>()),
     );
   }
 
+  if (!getIt.isRegistered<UserProfileLocalDataSource>()) {
+    getIt.registerLazySingleton<UserProfileLocalDataSource>(
+      () => UserProfileLocalDataSource(getIt<SharedPreferences>()),
+    );
+  }
+
+  if (!getIt.isRegistered<HydrationLogLocalDataSource>()) {
+    getIt.registerLazySingleton<HydrationLogLocalDataSource>(
+      () => HydrationLogLocalDataSource(),
+    );
+  }
+
+  // Repositories
   if (!getIt.isRegistered<INotificationRepository>()) {
     getIt.registerLazySingleton<INotificationRepository>(
       () => NotificationRepositoryImpl(getIt<NotificationManager>()),
@@ -51,10 +77,24 @@ Future<void> setupDependencies() async {
     );
   }
 
+  if (!getIt.isRegistered<IUserProfileRepository>()) {
+    getIt.registerLazySingleton<IUserProfileRepository>(
+      () => UserProfileRepositoryImpl(getIt<UserProfileLocalDataSource>()),
+    );
+  }
+
+  if (!getIt.isRegistered<IHydrationLogRepository>()) {
+    getIt.registerLazySingleton<IHydrationLogRepository>(
+      () => HydrationLogRepositoryImpl(getIt<HydrationLogLocalDataSource>()),
+    );
+  }
+
+  // Domain Services
   if (!getIt.isRegistered<SchedulingEngine>()) {
     getIt.registerLazySingleton<SchedulingEngine>(SchedulingEngine.new);
   }
 
+  // Use Cases
   if (!getIt.isRegistered<ComputeReminderScheduleUseCase>()) {
     getIt.registerLazySingleton<ComputeReminderScheduleUseCase>(
       () => ComputeReminderScheduleUseCase(getIt<SchedulingEngine>()),
@@ -70,4 +110,41 @@ Future<void> setupDependencies() async {
       ),
     );
   }
+
+  if (!getIt.isRegistered<SaveUserProfileUseCase>()) {
+    getIt.registerLazySingleton<SaveUserProfileUseCase>(
+      () => SaveUserProfileUseCase(getIt<IUserProfileRepository>()),
+    );
+  }
+
+  if (!getIt.isRegistered<GetUserProfileUseCase>()) {
+    getIt.registerLazySingleton<GetUserProfileUseCase>(
+      () => GetUserProfileUseCase(getIt<IUserProfileRepository>()),
+    );
+  }
+
+  if (!getIt.isRegistered<MarkOnboardingCompleteUseCase>()) {
+    getIt.registerLazySingleton<MarkOnboardingCompleteUseCase>(
+      () => MarkOnboardingCompleteUseCase(getIt<IUserProfileRepository>()),
+    );
+  }
+
+  if (!getIt.isRegistered<LogHydrationIntakeUseCase>()) {
+    getIt.registerLazySingleton<LogHydrationIntakeUseCase>(
+      () => LogHydrationIntakeUseCase(getIt<IHydrationLogRepository>()),
+    );
+  }
+
+  if (!getIt.isRegistered<GetDailyHistoryUseCase>()) {
+    getIt.registerLazySingleton<GetDailyHistoryUseCase>(
+      () => GetDailyHistoryUseCase(getIt<IHydrationLogRepository>()),
+    );
+  }
+
+  if (!getIt.isRegistered<GetWeeklyProgressUseCase>()) {
+    getIt.registerLazySingleton<GetWeeklyProgressUseCase>(
+      () => GetWeeklyProgressUseCase(getIt<IHydrationLogRepository>()),
+    );
+  }
 }
+

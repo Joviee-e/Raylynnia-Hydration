@@ -1,4 +1,5 @@
 import '../../domain/entities/hydration_log.dart';
+import '../../domain/entities/daily_hydration_summary.dart';
 import '../../domain/repositories/i_hydration_log_repository.dart';
 import '../datasources/interfaces/i_hydration_log_datasource.dart';
 import '../mappers/hydration_log_mapper.dart';
@@ -25,4 +26,55 @@ class HydrationLogRepositoryImpl implements IHydrationLogRepository {
         .map(HydrationLogMapper.toEntity)
         .toList(growable: false);
   }
+
+  @override
+  Future<void> appendEntry(HydrationLog log) async {
+    return addHydrationLog(log);
+  }
+
+  @override
+  Future<DailyHydrationSummary?> getDailyHistory(DateTime date) async {
+    final List<HydrationLog> logs = await getHydrationLogs();
+    
+    final dailyLogs = logs.where((log) {
+      final logDate = log.timestamp;
+      return logDate.year == date.year &&
+          logDate.month == date.month &&
+          logDate.day == date.day;
+    }).toList();
+
+    if (dailyLogs.isEmpty) {
+      return null;
+    }
+
+    final totalMl = dailyLogs.fold<int>(0, (sum, log) => sum + log.volumeMl);
+    
+    return DailyHydrationSummary(
+      date: date,
+      totalVolumeMl: totalMl,
+      logs: dailyLogs,
+    );
+  }
+
+  @override
+  Future<Map<DateTime, int>> getWeeklyProgress(DateTime startDate) async {
+    final List<HydrationLog> logs = await getHydrationLogs();
+    final progress = <DateTime, int>{};
+
+    for (int i = 0; i < 7; i++) {
+      final date = startDate.add(Duration(days: i));
+      final dailyLogs = logs.where((log) {
+        final logDate = log.timestamp;
+        return logDate.year == date.year &&
+            logDate.month == date.month &&
+            logDate.day == date.day;
+      }).toList();
+
+      final totalMl = dailyLogs.fold<int>(0, (sum, log) => sum + log.volumeMl);
+      progress[date] = totalMl;
+    }
+
+    return progress;
+  }
 }
+

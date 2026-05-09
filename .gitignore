@@ -126,6 +126,16 @@ node_modules/
 *.lcov
 
 # -------------------------------
+# Unused Flutter platform scaffolds (keep Android tracked for now)
+# -------------------------------
+/ios/
+/linux/
+/macos/
+/web/
+/windows/
+/test/widget_test.dart
+
+# -------------------------------
 # Git / patch leftovers
 # -------------------------------
 *.orig

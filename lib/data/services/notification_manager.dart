@@ -42,15 +42,15 @@ class NotificationManager {
     final AndroidFlutterLocalNotificationsPlugin? androidPlugin =
         _plugin.resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>();
-    final DarwinFlutterLocalNotificationsPlugin? darwinPlugin =
+    final IOSFlutterLocalNotificationsPlugin? iosPlugin =
         _plugin.resolvePlatformSpecificImplementation<
-            DarwinFlutterLocalNotificationsPlugin>();
+            IOSFlutterLocalNotificationsPlugin>();
 
     if (Platform.isAndroid) {
       return await androidPlugin?.requestNotificationsPermission() ?? false;
     }
 
-    return await darwinPlugin?.requestPermissions(
+    return await iosPlugin?.requestPermissions(
           alert: true,
           badge: true,
           sound: true,
