@@ -9,6 +9,7 @@ abstract final class SchedulePreferencesMapper {
       weekendWakeTime: Duration(minutes: model.weekendWakeTimeMinutes),
       weekendSleepTime: Duration(minutes: model.weekendSleepTimeMinutes),
       reminderIntervalMinutes: model.reminderIntervalMinutes,
+      notificationsActive: model.notificationsActive,
     );
   }
 
@@ -21,6 +22,7 @@ abstract final class SchedulePreferencesMapper {
       weekendWakeTimeMinutes: entity.weekendWakeTime.inMinutes,
       weekendSleepTimeMinutes: entity.weekendSleepTime.inMinutes,
       reminderIntervalMinutes: entity.reminderIntervalMinutes,
+      notificationsActive: entity.notificationsActive,
     );
   }
 }

@@ -5,6 +5,7 @@ class UserSchedulePreferences {
     required this.weekendWakeTime,
     required this.weekendSleepTime,
     required this.reminderIntervalMinutes,
+    this.notificationsActive = true,
   });
 
   final Duration weekdayWakeTime;
@@ -12,4 +13,5 @@ class UserSchedulePreferences {
   final Duration weekendWakeTime;
   final Duration weekendSleepTime;
   final int reminderIntervalMinutes;
+  final bool notificationsActive;
 }

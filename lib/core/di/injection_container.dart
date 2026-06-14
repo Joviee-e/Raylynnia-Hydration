@@ -1,6 +1,8 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 
 import '../../data/datasources/interfaces/i_user_profile_datasource.dart';
 import '../../data/datasources/interfaces/i_hydration_log_datasource.dart';
@@ -29,6 +31,9 @@ import '../../domain/usecases/get_weekly_progress_usecase.dart';
 final GetIt getIt = GetIt.instance;
 
 Future<void> setupDependencies() async {
+  await Hive.initFlutter();
+  await Hive.openBox('hydration_logs');
+
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
   if (!getIt.isRegistered<SharedPreferences>()) {
@@ -115,7 +120,10 @@ Future<void> setupDependencies() async {
 
   if (!getIt.isRegistered<SaveUserProfileUseCase>()) {
     getIt.registerLazySingleton<SaveUserProfileUseCase>(
-      () => SaveUserProfileUseCase(getIt<IUserProfileRepository>()),
+      () => SaveUserProfileUseCase(
+        getIt<IUserProfileRepository>(),
+        getIt<ISchedulingRepository>(),
+      ),
     );
   }
 

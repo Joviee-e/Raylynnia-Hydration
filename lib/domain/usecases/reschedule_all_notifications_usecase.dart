@@ -22,6 +22,12 @@ class RescheduleAllNotificationsUseCase {
       return;
     }
 
+    await _notificationRepository.cancelAll();
+
+    if (!preferences.notificationsActive) {
+      return;
+    }
+
     final DateTime anchor = now ?? DateTime.now();
     final ReminderSchedule schedule = _computeReminderScheduleUseCase.execute(
       dayAnchor: anchor,
@@ -29,7 +35,6 @@ class RescheduleAllNotificationsUseCase {
       isWeekend: _isWeekend(anchor),
     );
 
-    await _notificationRepository.cancelAll();
     await _notificationRepository.scheduleAll(schedule);
   }
 

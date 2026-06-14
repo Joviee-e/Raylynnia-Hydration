@@ -49,7 +49,10 @@ final getUserProfileProvider = Provider<GetUserProfileUseCase>((ref) {
 });
 
 final saveUserProfileProvider = Provider<SaveUserProfileUseCase>((ref) {
-  return SaveUserProfileUseCase(ref.watch(userProfileRepositoryProvider));
+  return SaveUserProfileUseCase(
+    ref.watch(userProfileRepositoryProvider),
+    ref.watch(schedulingRepositoryProvider),
+  );
 });
 
 final markOnboardingCompleteProvider = Provider<MarkOnboardingCompleteUseCase>((ref) {

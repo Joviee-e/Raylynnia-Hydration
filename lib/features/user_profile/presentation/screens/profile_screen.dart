@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hive/hive.dart';
 import '../../../../core/di/injection_container.dart';
 import '../../../../core/providers/app_providers.dart';
 import '../../../../core/routing/route_names.dart';
@@ -11,6 +12,7 @@ import '../../../../core/widgets/app_header.dart';
 import '../../../../domain/usecases/save_user_profile_usecase.dart';
 import '../../../../domain/entities/user_schedule_preferences.dart';
 import '../viewmodels/profile_viewmodel.dart';
+import '../../../../data/services/notification_manager.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -319,6 +321,13 @@ class ProfileScreen extends ConsumerWidget {
               onPressed: () async {
                 final prefs = getIt<SharedPreferences>();
                 await prefs.clear();
+                try {
+                  final logBox = Hive.box('hydration_logs');
+                  await logBox.clear();
+                } catch (_) {}
+                try {
+                  await getIt<NotificationManager>().cancelAll();
+                } catch (_) {}
                 if (context.mounted) {
                   Navigator.pop(context);
                   context.go(RouteNames.onboarding);

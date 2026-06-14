@@ -5,6 +5,7 @@ class UserSchedulePreferencesModel {
     required this.weekendWakeTimeMinutes,
     required this.weekendSleepTimeMinutes,
     required this.reminderIntervalMinutes,
+    this.notificationsActive = true,
   });
 
   final int weekdayWakeTimeMinutes;
@@ -12,6 +13,7 @@ class UserSchedulePreferencesModel {
   final int weekendWakeTimeMinutes;
   final int weekendSleepTimeMinutes;
   final int reminderIntervalMinutes;
+  final bool notificationsActive;
 
   factory UserSchedulePreferencesModel.fromJson(Map<String, dynamic> json) {
     return UserSchedulePreferencesModel(
@@ -20,6 +22,7 @@ class UserSchedulePreferencesModel {
       weekendWakeTimeMinutes: json['weekendWakeTimeMinutes'] as int,
       weekendSleepTimeMinutes: json['weekendSleepTimeMinutes'] as int,
       reminderIntervalMinutes: json['reminderIntervalMinutes'] as int,
+      notificationsActive: json['notificationsActive'] as bool? ?? true,
     );
   }
 
@@ -30,6 +33,7 @@ class UserSchedulePreferencesModel {
       'weekendWakeTimeMinutes': weekendWakeTimeMinutes,
       'weekendSleepTimeMinutes': weekendSleepTimeMinutes,
       'reminderIntervalMinutes': reminderIntervalMinutes,
+      'notificationsActive': notificationsActive,
     };
   }
 }

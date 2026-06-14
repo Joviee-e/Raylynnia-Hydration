@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/providers/app_providers.dart';
@@ -13,10 +14,28 @@ class ScheduleSettingsScreen extends ConsumerStatefulWidget {
   ConsumerState<ScheduleSettingsScreen> createState() => _ScheduleSettingsScreenState();
 }
 
-class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen> {
+class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen> with WidgetsBindingObserver {
   int _activeSection = 0; // 0 for Rest Cycle, 1 for Reminders
   bool _isWeekend = false;
-  bool _notificationsActive = true;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      ref.read(scheduleSettingsViewModelProvider.notifier).checkExactAlarmPermission();
+    }
+  }
 
   String _formatDuration(Duration d) {
     final h = d.inHours;
@@ -374,10 +393,10 @@ class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen>
                               ],
                             ),
                             Switch(
-                              value: _notificationsActive,
+                              value: scheduleState.notificationsActive,
                               activeColor: AppColors.primary,
                               onChanged: (val) {
-                                setState(() => _notificationsActive = val);
+                                scheduleViewModel.setNotificationsActive(val);
                                 ScaffoldMessenger.of(context).clearSnackBars();
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
@@ -396,6 +415,81 @@ class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen>
                         ),
                       ),
                       const SizedBox(height: 24),
+
+                      if (Platform.isAndroid && !scheduleState.hasExactAlarmPermission) ...[
+                        Container(
+                          padding: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: AppColors.errorContainer.withOpacity(0.15),
+                            borderRadius: BorderRadius.circular(24),
+                            border: Border.all(
+                              color: AppColors.errorContainer.withOpacity(0.3),
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.warning_amber_rounded,
+                                    color: AppColors.error,
+                                    size: 24,
+                                  ),
+                                  const SizedBox(width: 12),
+                                  Text(
+                                    'Timing Accuracy Limited',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(
+                                          fontFamily: 'Manrope',
+                                          fontWeight: FontWeight.w600,
+                                          color: AppColors.error,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                              const Text(
+                                'To receive hydration reminders at the exact scheduled minutes, please grant the "Alarms & Reminders" permission. Otherwise, reminders might vary slightly to optimize battery life.',
+                                style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 13,
+                                  color: AppColors.onSurfaceVariant,
+                                  height: 1.4,
+                                ),
+                              ),
+                              const SizedBox(height: 16),
+                              ElevatedButton.icon(
+                                onPressed: scheduleViewModel.requestExactAlarmPermission,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColors.error,
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(999),
+                                  ),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 20,
+                                    vertical: 12,
+                                  ),
+                                ),
+                                icon: const Icon(Icons.settings, size: 16),
+                                label: const Text(
+                                  'GRANT ALARMS & REMINDERS',
+                                  style: TextStyle(
+                                    fontFamily: 'Inter',
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 1.0,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                      ],
 
                       // Bento grid: Next Alert and Interval cards
                       Row(
@@ -519,7 +613,29 @@ class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen>
                     ],
 
                     ElevatedButton(
-                      onPressed: scheduleState.isSaving ? null : scheduleViewModel.saveSettings,
+                      onPressed: scheduleState.isSaving
+                          ? null
+                          : () async {
+                              await scheduleViewModel.saveSettings();
+                              if (context.mounted) {
+                                if (ref.read(scheduleSettingsViewModelProvider).error == null) {
+                                  ScaffoldMessenger.of(context).clearSnackBars();
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: const Text(
+                                        'Ritual settings saved successfully!',
+                                        style: TextStyle(fontFamily: 'Inter'),
+                                      ),
+                                      backgroundColor: AppColors.primary,
+                                      behavior: SnackBarBehavior.floating,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(999),
+                                      ),
+                                    ),
+                                  );
+                                }
+                              }
+                            },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
                         foregroundColor: AppColors.onPrimary,

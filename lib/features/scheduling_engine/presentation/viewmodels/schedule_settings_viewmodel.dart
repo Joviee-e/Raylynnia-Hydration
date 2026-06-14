@@ -8,6 +8,7 @@ import '../../../../domain/usecases/get_user_profile_usecase.dart';
 import '../../../../domain/usecases/save_user_profile_usecase.dart';
 import '../../../../domain/usecases/compute_reminder_schedule_usecase.dart';
 import '../../../../domain/usecases/reschedule_all_notifications_usecase.dart';
+import '../../../../data/services/notification_manager.dart';
 
 class ScheduleSettingsState {
   const ScheduleSettingsState({
@@ -18,6 +19,8 @@ class ScheduleSettingsState {
     this.weekendWakeTime,
     this.weekendSleepTime,
     this.reminderIntervalMinutes = 60,
+    this.notificationsActive = true,
+    this.hasExactAlarmPermission = true,
     this.weekdaySchedulePreview,
     this.weekendSchedulePreview,
     this.isLoading = false,
@@ -32,6 +35,8 @@ class ScheduleSettingsState {
   final Duration? weekendWakeTime;
   final Duration? weekendSleepTime;
   final int reminderIntervalMinutes;
+  final bool notificationsActive;
+  final bool hasExactAlarmPermission;
   final ReminderSchedule? weekdaySchedulePreview;
   final ReminderSchedule? weekendSchedulePreview;
   final bool isLoading;
@@ -46,6 +51,8 @@ class ScheduleSettingsState {
     Duration? weekendWakeTime,
     Duration? weekendSleepTime,
     int? reminderIntervalMinutes,
+    bool? notificationsActive,
+    bool? hasExactAlarmPermission,
     ReminderSchedule? weekdaySchedulePreview,
     ReminderSchedule? weekendSchedulePreview,
     bool? isLoading,
@@ -61,6 +68,8 @@ class ScheduleSettingsState {
       weekendWakeTime: weekendWakeTime ?? this.weekendWakeTime,
       weekendSleepTime: weekendSleepTime ?? this.weekendSleepTime,
       reminderIntervalMinutes: reminderIntervalMinutes ?? this.reminderIntervalMinutes,
+      notificationsActive: notificationsActive ?? this.notificationsActive,
+      hasExactAlarmPermission: hasExactAlarmPermission ?? this.hasExactAlarmPermission,
       weekdaySchedulePreview: weekdaySchedulePreview ?? this.weekdaySchedulePreview,
       weekendSchedulePreview: weekendSchedulePreview ?? this.weekendSchedulePreview,
       isLoading: isLoading ?? this.isLoading,
@@ -94,6 +103,7 @@ class ScheduleSettingsViewModel extends StateNotifier<ScheduleSettingsState> {
     try {
       final profile = await getUserProfileUseCase.execute();
       final preferences = await getIt<IUserProfileRepository>().getPreferences();
+      final hasExact = await getIt<NotificationManager>().hasExactAlarmPermission();
       state = state.copyWith(
         userProfile: profile,
         preferences: preferences,
@@ -102,6 +112,8 @@ class ScheduleSettingsViewModel extends StateNotifier<ScheduleSettingsState> {
         weekendWakeTime: preferences?.weekendWakeTime,
         weekendSleepTime: preferences?.weekendSleepTime,
         reminderIntervalMinutes: preferences?.reminderIntervalMinutes ?? 60,
+        notificationsActive: preferences?.notificationsActive ?? true,
+        hasExactAlarmPermission: hasExact,
         isLoading: false,
       );
       _updateSchedulePreviews();
@@ -111,6 +123,16 @@ class ScheduleSettingsViewModel extends StateNotifier<ScheduleSettingsState> {
         isLoading: false,
       );
     }
+  }
+
+  Future<void> checkExactAlarmPermission() async {
+    final hasExact = await getIt<NotificationManager>().hasExactAlarmPermission();
+    state = state.copyWith(hasExactAlarmPermission: hasExact);
+  }
+
+  Future<void> requestExactAlarmPermission() async {
+    await getIt<NotificationManager>().requestExactAlarmPermission();
+    await checkExactAlarmPermission();
   }
 
   void setWeekdayWakeTime(Duration time) {
@@ -138,6 +160,10 @@ class ScheduleSettingsViewModel extends StateNotifier<ScheduleSettingsState> {
     _updateSchedulePreviews();
   }
 
+  void setNotificationsActive(bool active) {
+    state = state.copyWith(notificationsActive: active);
+  }
+
   void _updateSchedulePreviews() {
     if (state.weekdayWakeTime == null ||
         state.weekdaySleepTime == null ||
@@ -152,6 +178,7 @@ class ScheduleSettingsViewModel extends StateNotifier<ScheduleSettingsState> {
       weekendWakeTime: state.weekendWakeTime!,
       weekendSleepTime: state.weekendSleepTime!,
       reminderIntervalMinutes: state.reminderIntervalMinutes,
+      notificationsActive: state.notificationsActive,
     );
 
     final now = DateTime.now();
@@ -192,6 +219,7 @@ class ScheduleSettingsViewModel extends StateNotifier<ScheduleSettingsState> {
         weekendWakeTime: state.weekendWakeTime!,
         weekendSleepTime: state.weekendSleepTime!,
         reminderIntervalMinutes: state.reminderIntervalMinutes,
+        notificationsActive: state.notificationsActive,
       );
 
       await saveUserProfileUseCase.execute(

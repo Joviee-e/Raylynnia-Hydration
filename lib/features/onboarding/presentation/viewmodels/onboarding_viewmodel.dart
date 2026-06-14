@@ -176,6 +176,7 @@ class OnboardingViewModel extends StateNotifier<OnboardingState> {
         weekendWakeTime: state.weekendWakeTime,
         weekendSleepTime: state.weekendSleepTime,
         reminderIntervalMinutes: state.reminderIntervalMinutes,
+        notificationsActive: true,
       );
 
       // Create profile
