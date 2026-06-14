@@ -94,7 +94,7 @@ class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen>
                   width: 40,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: AppColors.outlineVariant.withOpacity(0.3),
+                    color: AppColors.outlineVariant.withValues(alpha: 0.3),
                     borderRadius: BorderRadius.circular(999),
                   ),
                 ),
@@ -394,7 +394,7 @@ class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen>
                             ),
                             Switch(
                               value: scheduleState.notificationsActive,
-                              activeColor: AppColors.primary,
+                              activeThumbColor: AppColors.primary,
                               onChanged: (val) {
                                 scheduleViewModel.setNotificationsActive(val);
                                 ScaffoldMessenger.of(context).clearSnackBars();
@@ -420,10 +420,10 @@ class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen>
                         Container(
                           padding: const EdgeInsets.all(20),
                           decoration: BoxDecoration(
-                            color: AppColors.errorContainer.withOpacity(0.15),
+                            color: AppColors.errorContainer.withValues(alpha: 0.15),
                             borderRadius: BorderRadius.circular(24),
                             border: Border.all(
-                              color: AppColors.errorContainer.withOpacity(0.3),
+                              color: AppColors.errorContainer.withValues(alpha: 0.3),
                             ),
                           ),
                           child: Column(
@@ -499,7 +499,7 @@ class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen>
                               height: 160,
                               padding: const EdgeInsets.all(24),
                               decoration: BoxDecoration(
-                                color: AppColors.primaryContainer.withOpacity(0.3),
+                                color: AppColors.primaryContainer.withValues(alpha: 0.3),
                                 borderRadius: BorderRadius.circular(32),
                               ),
                               child: Column(
@@ -600,9 +600,9 @@ class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen>
                         width: double.infinity,
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: AppColors.errorContainer.withOpacity(0.2),
+                          color: AppColors.errorContainer.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: AppColors.errorContainer.withOpacity(0.5)),
+                          border: Border.all(color: AppColors.errorContainer.withValues(alpha: 0.5)),
                         ),
                         child: Text(
                           scheduleState.error!,
@@ -927,9 +927,9 @@ class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen>
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppColors.secondaryContainer.withOpacity(0.25),
+        color: AppColors.secondaryContainer.withValues(alpha: 0.25),
         borderRadius: BorderRadius.circular(32),
-        border: Border.all(color: Colors.white.withOpacity(0.2)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1051,11 +1051,11 @@ class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen>
             return Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: isNext ? AppColors.surfaceContainerLowest : AppColors.surfaceContainerLow.withOpacity(0.4),
+                color: isNext ? AppColors.surfaceContainerLowest : AppColors.surfaceContainerLow.withValues(alpha: 0.4),
                 borderRadius: BorderRadius.circular(24),
                 border: isNext
                     ? Border.all(
-                        color: AppColors.primary.withOpacity(0.15),
+                        color: AppColors.primary.withValues(alpha: 0.15),
                         width: 1,
                       )
                     : null,
@@ -1095,7 +1095,7 @@ class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen>
                             fontFamily: 'Manrope',
                             fontSize: 16,
                             fontWeight: isNext ? FontWeight.bold : FontWeight.w500,
-                            color: isNext ? AppColors.onSurface : AppColors.onSurface.withOpacity(0.5),
+                            color: isNext ? AppColors.onSurface : AppColors.onSurface.withValues(alpha: 0.5),
                           ),
                         ),
                         const SizedBox(height: 2),
@@ -1105,7 +1105,7 @@ class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen>
                             fontFamily: 'Inter',
                             fontSize: 11,
                             fontWeight: FontWeight.w300,
-                            color: isNext ? AppColors.primaryDim : AppColors.onSurfaceVariant.withOpacity(0.5),
+                            color: isNext ? AppColors.primaryDim : AppColors.onSurfaceVariant.withValues(alpha: 0.5),
                           ),
                         ),
                       ],
@@ -1116,7 +1116,7 @@ class _ScheduleSettingsScreenState extends ConsumerState<ScheduleSettingsScreen>
                         ? Icons.check_circle
                         : (isNext ? Icons.water_drop : Icons.radio_button_unchecked),
                     color: isPast
-                        ? AppColors.primary.withOpacity(0.4)
+                        ? AppColors.primary.withValues(alpha: 0.4)
                         : (isNext ? AppColors.primary : AppColors.outlineVariant),
                     size: 20,
                   ),

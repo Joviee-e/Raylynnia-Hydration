@@ -157,7 +157,7 @@ class HistoryScreen extends ConsumerWidget {
                         color: AppColors.surfaceContainerLowest,
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
-                          color: AppColors.outlineVariant.withOpacity(0.1),
+                          color: AppColors.outlineVariant.withValues(alpha: 0.1),
                           width: 0.5,
                         ),
                       ),
@@ -192,12 +192,12 @@ class HistoryScreen extends ConsumerWidget {
                           padding: const EdgeInsets.symmetric(vertical: 48.0),
                           child: Column(
                             children: [
-                              Icon(Icons.eco_outlined, color: AppColors.outlineVariant.withOpacity(0.5), size: 40),
+                              Icon(Icons.eco_outlined, color: AppColors.outlineVariant.withValues(alpha: 0.5), size: 40),
                               const SizedBox(height: 12),
                               Text(
                                 'No logs for this date',
                                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                      color: AppColors.onSurfaceVariant.withOpacity(0.6),
+                                      color: AppColors.onSurfaceVariant.withValues(alpha: 0.6),
                                       fontStyle: FontStyle.italic,
                                     ),
                               ),

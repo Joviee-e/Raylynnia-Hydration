@@ -82,7 +82,7 @@ class _NameEntryScreenState extends State<NameEntryScreen> {
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 2.5,
-                          color: AppColors.primaryDim.withOpacity(0.6),
+                          color: AppColors.primaryDim.withValues(alpha: 0.6),
                         ),
                   ),
                   const SizedBox(height: 12),
@@ -117,12 +117,12 @@ class _NameEntryScreenState extends State<NameEntryScreen> {
                         duration: const Duration(milliseconds: 500),
                         curve: Curves.easeOut,
                         decoration: BoxDecoration(
-                          color: AppColors.surfaceContainerHighest.withOpacity(0.5),
+                          color: AppColors.surfaceContainerHighest.withValues(alpha: 0.5),
                           borderRadius: const BorderRadius.vertical(bottom: Radius.circular(4)),
                           boxShadow: [
                             if (_isFocused)
                               BoxShadow(
-                                color: AppColors.primary.withOpacity(0.08),
+                                color: AppColors.primary.withValues(alpha: 0.08),
                                 blurRadius: 20,
                                 spreadRadius: 2,
                                 offset: const Offset(0, 4),
@@ -163,7 +163,7 @@ class _NameEntryScreenState extends State<NameEntryScreen> {
                               duration: const Duration(milliseconds: 500),
                               curve: Curves.easeOut,
                               height: _isFocused ? 2.5 : 1.0,
-                              color: _isFocused ? AppColors.primary : AppColors.outlineVariant.withOpacity(0.3),
+                              color: _isFocused ? AppColors.primary : AppColors.outlineVariant.withValues(alpha: 0.3),
                             ),
                           ],
                         ),
@@ -173,7 +173,7 @@ class _NameEntryScreenState extends State<NameEntryScreen> {
                       Text(
                         'This is how Raylynnia will address you during your daily hydration rituals.',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: AppColors.onSurfaceVariant.withOpacity(0.8),
+                              color: AppColors.onSurfaceVariant.withValues(alpha: 0.8),
                               fontWeight: FontWeight.w300,
                               fontSize: 13,
                               height: 1.45,

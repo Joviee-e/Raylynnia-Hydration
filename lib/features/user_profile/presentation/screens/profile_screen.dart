@@ -47,7 +47,7 @@ class ProfileScreen extends ConsumerWidget {
                         width: 40,
                         height: 4,
                         decoration: BoxDecoration(
-                          color: AppColors.outlineVariant.withOpacity(0.3),
+                          color: AppColors.outlineVariant.withValues(alpha: 0.3),
                           borderRadius: BorderRadius.circular(999),
                         ),
                       ),
@@ -108,7 +108,7 @@ class ProfileScreen extends ConsumerWidget {
                         floatingLabelStyle: const TextStyle(color: AppColors.primary),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide(color: AppColors.outlineVariant.withOpacity(0.5)),
+                          borderSide: BorderSide(color: AppColors.outlineVariant.withValues(alpha: 0.5)),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
@@ -202,7 +202,7 @@ class ProfileScreen extends ConsumerWidget {
                         width: 40,
                         height: 4,
                         decoration: BoxDecoration(
-                          color: AppColors.outlineVariant.withOpacity(0.3),
+                          color: AppColors.outlineVariant.withValues(alpha: 0.3),
                           borderRadius: BorderRadius.circular(999),
                         ),
                       ),
@@ -224,7 +224,7 @@ class ProfileScreen extends ConsumerWidget {
                         floatingLabelStyle: const TextStyle(color: AppColors.primary),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide(color: AppColors.outlineVariant.withOpacity(0.5)),
+                          borderSide: BorderSide(color: AppColors.outlineVariant.withValues(alpha: 0.5)),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
@@ -600,7 +600,7 @@ class ProfileScreen extends ConsumerWidget {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(999),
                                     side: BorderSide(
-                                      color: AppColors.outlineVariant.withOpacity(0.15),
+                                      color: AppColors.outlineVariant.withValues(alpha: 0.15),
                                       width: 0.5,
                                     ),
                                   ),
@@ -700,7 +700,7 @@ class _SettingsRow extends StatelessWidget {
             const SizedBox(width: 8),
             Icon(
               Icons.chevron_right,
-              color: AppColors.outlineVariant.withOpacity(0.5),
+              color: AppColors.outlineVariant.withValues(alpha: 0.5),
               size: 20,
             ),
           ],

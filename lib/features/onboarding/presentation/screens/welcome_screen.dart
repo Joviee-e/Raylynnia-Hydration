@@ -48,8 +48,8 @@ class WelcomeScreen extends StatelessWidget {
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
                                 colors: [
-                                  AppColors.primaryContainer.withOpacity(0.4),
-                                  AppColors.tertiaryContainer.withOpacity(0.3),
+                                  AppColors.primaryContainer.withValues(alpha: 0.4),
+                                  AppColors.tertiaryContainer.withValues(alpha: 0.3),
                                 ],
                               ),
                             ),
@@ -63,9 +63,9 @@ class WelcomeScreen extends StatelessWidget {
                                   height: 140,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Colors.white.withOpacity(0.15),
+                                    color: Colors.white.withValues(alpha: 0.15),
                                     border: Border.all(
-                                      color: Colors.white.withOpacity(0.2),
+                                      color: Colors.white.withValues(alpha: 0.2),
                                       width: 1,
                                     ),
                                   ),
@@ -178,7 +178,7 @@ class WelcomeScreen extends StatelessWidget {
                             fontSize: 10,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 2.0,
-                            color: AppColors.onSurfaceVariant.withOpacity(0.7),
+                            color: AppColors.onSurfaceVariant.withValues(alpha: 0.7),
                           ),
                     ),
                   ),

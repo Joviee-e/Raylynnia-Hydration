@@ -41,17 +41,17 @@ class _OnboardingFlowScreenState extends ConsumerState<OnboardingFlowScreen> {
     final viewModel = ref.watch(onboardingViewModelProvider.notifier);
     final state = ref.watch(onboardingViewModelProvider);
 
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      canPop: state.currentStep == 0,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
         if (state.currentStep > 0) {
           viewModel.previousStep();
           _pageController.previousPage(
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeOut,
           );
-          return false;
         }
-        return true;
       },
       child: Scaffold(
         backgroundColor: AppColors.background,
@@ -66,7 +66,7 @@ class _OnboardingFlowScreenState extends ConsumerState<OnboardingFlowScreen> {
                 height: 500,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppColors.primaryContainer.withOpacity(0.15),
+                  color: AppColors.primaryContainer.withValues(alpha: 0.15),
                 ),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 120, sigmaY: 120),
@@ -82,7 +82,7 @@ class _OnboardingFlowScreenState extends ConsumerState<OnboardingFlowScreen> {
                 height: 600,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppColors.tertiaryContainer.withOpacity(0.1),
+                  color: AppColors.tertiaryContainer.withValues(alpha: 0.1),
                 ),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 140, sigmaY: 140),
@@ -175,7 +175,7 @@ class _OnboardingFlowScreenState extends ConsumerState<OnboardingFlowScreen> {
                         onGoalChanged: viewModel.setDailyGoalMl,
                         onComplete: () async {
                           final success = await viewModel.completeOnboarding();
-                          if (success && mounted) {
+                          if (success && context.mounted) {
                             context.go(RouteNames.home);
                           }
                         },

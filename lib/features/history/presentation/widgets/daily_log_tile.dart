@@ -25,7 +25,7 @@ LogUiMetadata _getMetadata(HydrationLog log) {
       category: 'Hydration Boost',
       icon: Icons.water_drop_outlined,
       color: AppColors.primary,
-      containerColor: AppColors.primaryContainer.withOpacity(0.4),
+      containerColor: AppColors.primaryContainer.withValues(alpha: 0.4),
     );
   } else if (log.volumeMl == 500) {
     return LogUiMetadata(
@@ -33,7 +33,7 @@ LogUiMetadata _getMetadata(HydrationLog log) {
       category: 'Recovery',
       icon: Icons.opacity_outlined,
       color: AppColors.secondary,
-      containerColor: AppColors.secondaryContainer.withOpacity(0.4),
+      containerColor: AppColors.secondaryContainer.withValues(alpha: 0.4),
     );
   } else if (log.volumeMl == 350) {
     return LogUiMetadata(
@@ -41,7 +41,7 @@ LogUiMetadata _getMetadata(HydrationLog log) {
       category: 'Steeped Calm',
       icon: Icons.coffee_outlined,
       color: AppColors.tertiary,
-      containerColor: AppColors.tertiaryContainer.withOpacity(0.4),
+      containerColor: AppColors.tertiaryContainer.withValues(alpha: 0.4),
     );
   }
   
@@ -53,7 +53,7 @@ LogUiMetadata _getMetadata(HydrationLog log) {
       category: 'Clean Start',
       icon: Icons.sunny,
       color: AppColors.primary,
-      containerColor: AppColors.primaryContainer.withOpacity(0.4),
+      containerColor: AppColors.primaryContainer.withValues(alpha: 0.4),
     );
   } else if (hour >= 11 && hour < 17) {
     return LogUiMetadata(
@@ -61,7 +61,7 @@ LogUiMetadata _getMetadata(HydrationLog log) {
       category: 'Afternoon Flow',
       icon: Icons.water_drop_outlined,
       color: AppColors.tertiary,
-      containerColor: AppColors.tertiaryContainer.withOpacity(0.4),
+      containerColor: AppColors.tertiaryContainer.withValues(alpha: 0.4),
     );
   } else if (hour >= 17 && hour < 22) {
     return LogUiMetadata(
@@ -69,7 +69,7 @@ LogUiMetadata _getMetadata(HydrationLog log) {
       category: 'Sanctuary Ripple',
       icon: Icons.local_drink_outlined,
       color: AppColors.secondary,
-      containerColor: AppColors.secondaryContainer.withOpacity(0.4),
+      containerColor: AppColors.secondaryContainer.withValues(alpha: 0.4),
     );
   } else {
     return LogUiMetadata(
@@ -77,7 +77,7 @@ LogUiMetadata _getMetadata(HydrationLog log) {
       category: 'Night Recharge',
       icon: Icons.bedtime_outlined,
       color: AppColors.tertiary,
-      containerColor: AppColors.tertiaryContainer.withOpacity(0.4),
+      containerColor: AppColors.tertiaryContainer.withValues(alpha: 0.4),
     );
   }
 }
@@ -123,7 +123,7 @@ class DailyLogTile extends StatelessWidget {
           ),
         ],
         border: Border.all(
-          color: AppColors.primaryContainer.withOpacity(0.0),
+          color: AppColors.primaryContainer.withValues(alpha: 0.0),
           width: 1,
         ),
       ),

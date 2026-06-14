@@ -21,10 +21,10 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
           height: preferredSize.height + topPadding,
           padding: EdgeInsets.only(top: topPadding, left: 20, right: 20),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.7),
+            color: Colors.white.withValues(alpha: 0.7),
             border: Border(
               bottom: BorderSide(
-                color: AppColors.outlineVariant.withOpacity(0.1),
+                color: AppColors.outlineVariant.withValues(alpha: 0.1),
                 width: 0.5,
               ),
             ),
@@ -41,7 +41,7 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: Colors.black.withOpacity(0.05),
+                        color: Colors.black.withValues(alpha: 0.05),
                         width: 1,
                       ),
                       image: const DecorationImage(

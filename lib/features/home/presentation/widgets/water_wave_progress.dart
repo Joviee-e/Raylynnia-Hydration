@@ -69,7 +69,7 @@ class _WaterWaveProgressState extends State<WaterWaveProgress> with SingleTicker
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: AppColors.surfaceContainerLow.withOpacity(0.5),
+                  color: AppColors.surfaceContainerLow.withValues(alpha: 0.5),
                   width: 10,
                 ),
               ),

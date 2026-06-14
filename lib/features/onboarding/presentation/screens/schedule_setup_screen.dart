@@ -241,7 +241,7 @@ class _ScheduleSetupScreenState extends State<ScheduleSetupScreen> {
                         color: AppColors.surfaceContainerLowest,
                         borderRadius: BorderRadius.circular(32),
                         border: Border.all(
-                          color: AppColors.outlineVariant.withOpacity(0.15),
+                        color: AppColors.outlineVariant.withValues(alpha: 0.15),
                           width: 1,
                         ),
                         boxShadow: const [
@@ -324,7 +324,7 @@ class _ScheduleSetupScreenState extends State<ScheduleSetupScreen> {
                         color: AppColors.surfaceContainerLow,
                         borderRadius: BorderRadius.circular(32),
                         border: Border.all(
-                          color: AppColors.outlineVariant.withOpacity(0.15),
+                          color: AppColors.outlineVariant.withValues(alpha: 0.15),
                           width: 1,
                         ),
                         boxShadow: const [
@@ -402,7 +402,7 @@ class _ScheduleSetupScreenState extends State<ScheduleSetupScreen> {
                     width: double.infinity,
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: AppColors.surfaceContainerHighest.withOpacity(0.5),
+                      color: AppColors.surfaceContainerHighest.withValues(alpha: 0.5),
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: Row(
@@ -492,9 +492,9 @@ class _ScheduleSetupScreenState extends State<ScheduleSetupScreen> {
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
                       activeTrackColor: AppColors.primary,
-                      inactiveTrackColor: AppColors.outlineVariant.withOpacity(0.3),
+                      inactiveTrackColor: AppColors.outlineVariant.withValues(alpha: 0.3),
                       thumbColor: AppColors.primary,
-                      overlayColor: AppColors.primary.withOpacity(0.1),
+                      overlayColor: AppColors.primary.withValues(alpha: 0.1),
                       trackHeight: 4,
                     ),
                     child: Slider(
@@ -514,7 +514,7 @@ class _ScheduleSetupScreenState extends State<ScheduleSetupScreen> {
                     Text(
                       widget.computedSchedulePreview!,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: AppColors.onSurfaceVariant.withOpacity(0.7),
+                            color: AppColors.onSurfaceVariant.withValues(alpha: 0.7),
                             fontStyle: FontStyle.italic,
                           ),
                     ),

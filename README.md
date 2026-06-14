@@ -184,6 +184,32 @@ flutter test test/widget/
 | Cloud Backup (opt-in) | Optional encrypted backup to iCloud / Google Drive |
 | Siri / Google Assistant | Voice shortcuts for logging a drink |
 
+## System Architecture Mechanisms
+
+### Timezone-Aware Notification Scheduling
+To ensure notifications fire at the exact user-defined times without battery-draining GPS/location requests, Raylynnia Hydration utilizes device-local timezone detection:
+- Uses the `flutter_timezone` package to automatically determine the device's current IANA timezone name.
+- Initializes the `timezone` database (`tz.initializeDatabase()`) and binds `tz.local` to the identified timezone.
+- Schedules all daily reminders using `tz.TZDateTime.from` in the user's local timezone.
+- When timezone offsets change (e.g., traveling), the scheduling layer triggers rescheduling upon app resume or startup, recalculating dates in the new timezone offset.
+
+### Data Reset & Recovery Flow
+The app is designed to support total local state resets from the User Profile screen:
+1. **SharedPreferences Clearance**: Clears the key-value store, which deletes onboarding completion state, user profile metadata, and notification schedules.
+2. **Hive Clearance**: Invokes `clear()` on the hydration logs local box to purge historical drink logs.
+3. **Notification Purge**: Invokes `cancelAll()` on the platform notification manager to delete queued alarm instances.
+4. **Onboarding Redirect**: Performs an animated routing redirect to `/onboarding`.
+
+---
+
+## Maintainer Guidelines
+
+To keep the Raylynnia codebase robust, optimized, and compliant with production guidelines:
+- **Zero Warnings**: Ensure `flutter analyze` runs with 0 errors and warnings. Replace any deprecated APIs (such as `withOpacity(x)` with `withValues(alpha: x)`).
+- **Safe BuildContexts**: Avoid accessing `BuildContext` across asynchronous gaps without confirming `context.mounted`.
+- **UI & Layout Integrity**: Do not adjust spacing, grid tokens, typography, or the custom HSL color palette unless requested explicitly.
+- **Provider Refactoring**: Do not implement manual, ad-hoc state managers in the screens. Maintain the Riverpod provider boundaries and keep domain logic in the use cases and viewmodels.
+
 ---
 
 ## License

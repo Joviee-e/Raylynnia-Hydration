@@ -86,7 +86,7 @@ class HomeScreen extends ConsumerWidget {
                             fontFamily: 'Inter',
                           ),
                         ),
-                        backgroundColor: AppColors.onSurface.withOpacity(0.9),
+                        backgroundColor: AppColors.onSurface.withValues(alpha: 0.9),
                         behavior: SnackBarBehavior.floating,
                         margin: const EdgeInsets.only(bottom: 100, left: 80, right: 80),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
@@ -122,7 +122,7 @@ class HomeScreen extends ConsumerWidget {
             fontFamily: 'Inter',
           ),
         ),
-        backgroundColor: AppColors.onSurface.withOpacity(0.9),
+        backgroundColor: AppColors.onSurface.withValues(alpha: 0.9),
         behavior: SnackBarBehavior.floating,
         margin: const EdgeInsets.only(bottom: 100, left: 80, right: 80),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
@@ -182,9 +182,9 @@ class HomeScreen extends ConsumerWidget {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Text.rich(
-                              TextSpan(
+                              const TextSpan(
                                 children: [
-                                  const TextSpan(text: 'Your rhythm is\n'),
+                                  TextSpan(text: 'Your rhythm is\n'),
                                   TextSpan(
                                     text: 'steady and clear',
                                     style: TextStyle(
@@ -192,7 +192,7 @@ class HomeScreen extends ConsumerWidget {
                                       color: AppColors.primary,
                                     ),
                                   ),
-                                  const TextSpan(text: '.'),
+                                  TextSpan(text: '.'),
                                 ],
                               ),
                               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -210,7 +210,7 @@ class HomeScreen extends ConsumerWidget {
                         Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: AppColors.outlineVariant.withOpacity(0.1),
+                            color: AppColors.outlineVariant.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(24),
                           ),
                           clipBehavior: Clip.antiAlias,
@@ -250,7 +250,7 @@ class HomeScreen extends ConsumerWidget {
                                             style: TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w300,
-                                              color: AppColors.outline.withOpacity(0.4),
+                                              color: AppColors.outline.withValues(alpha: 0.4),
                                             ),
                                           ),
                                         ],
@@ -262,7 +262,7 @@ class HomeScreen extends ConsumerWidget {
                               Container(
                                 width: 1,
                                 height: 80,
-                                color: AppColors.outlineVariant.withOpacity(0.1),
+                                color: AppColors.outlineVariant.withValues(alpha: 0.1),
                               ),
                               Expanded(
                                 child: Container(
@@ -298,7 +298,7 @@ class HomeScreen extends ConsumerWidget {
                                             style: TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w300,
-                                              color: AppColors.outline.withOpacity(0.4),
+                                              color: AppColors.outline.withValues(alpha: 0.4),
                                             ),
                                           ),
                                         ],

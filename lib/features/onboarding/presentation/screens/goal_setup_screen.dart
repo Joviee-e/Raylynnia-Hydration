@@ -139,12 +139,12 @@ class _GoalSetupScreenState extends State<GoalSetupScreen> {
                         duration: const Duration(milliseconds: 500),
                         curve: Curves.easeOut,
                         decoration: BoxDecoration(
-                          color: AppColors.surfaceContainerHighest.withOpacity(0.5),
+                          color: AppColors.surfaceContainerHighest.withValues(alpha: 0.5),
                           borderRadius: const BorderRadius.vertical(bottom: Radius.circular(4)),
                           boxShadow: [
                             if (_isFocused)
                               BoxShadow(
-                                color: AppColors.primary.withOpacity(0.08),
+                                color: AppColors.primary.withValues(alpha: 0.08),
                                 blurRadius: 20,
                                 spreadRadius: 2,
                                 offset: const Offset(0, 4),
@@ -190,7 +190,7 @@ class _GoalSetupScreenState extends State<GoalSetupScreen> {
                               duration: const Duration(milliseconds: 500),
                               curve: Curves.easeOut,
                               height: _isFocused ? 2.5 : 1.0,
-                              color: _isFocused ? AppColors.primary : AppColors.outlineVariant.withOpacity(0.3),
+                              color: _isFocused ? AppColors.primary : AppColors.outlineVariant.withValues(alpha: 0.3),
                             ),
                           ],
                         ),
@@ -205,13 +205,13 @@ class _GoalSetupScreenState extends State<GoalSetupScreen> {
                       width: double.infinity,
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: AppColors.errorContainer.withOpacity(0.2),
+                        color: AppColors.errorContainer.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: AppColors.error.withOpacity(0.3), width: 1),
+                        border: Border.all(color: AppColors.error.withValues(alpha: 0.3), width: 1),
                       ),
                       child: Text(
                         widget.error!,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: AppColors.error,
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
@@ -226,10 +226,10 @@ class _GoalSetupScreenState extends State<GoalSetupScreen> {
                     width: double.infinity,
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: AppColors.primaryContainer.withOpacity(0.3),
+                      color: AppColors.primaryContainer.withValues(alpha: 0.3),
                       borderRadius: BorderRadius.circular(32),
                       border: Border.all(
-                        color: AppColors.primary.withOpacity(0.15),
+                        color: AppColors.primary.withValues(alpha: 0.15),
                         width: 1,
                       ),
                     ),
@@ -253,7 +253,7 @@ class _GoalSetupScreenState extends State<GoalSetupScreen> {
                         Text(
                           'We\'ll request permission to send you silent, mindful hydration reminders. You can adjust your preferences anytime in Settings.',
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: AppColors.onPrimaryContainer.withOpacity(0.8),
+                                color: AppColors.onPrimaryContainer.withValues(alpha: 0.8),
                                 height: 1.45,
                                 fontSize: 12,
                               ),
@@ -353,7 +353,7 @@ class _GoalSetupScreenState extends State<GoalSetupScreen> {
           color: isSelected ? AppColors.primaryContainer : AppColors.surfaceContainerLow,
           borderRadius: BorderRadius.circular(9999),
           border: Border.all(
-            color: isSelected ? AppColors.primary.withOpacity(0.3) : Colors.transparent,
+            color: isSelected ? AppColors.primary.withValues(alpha: 0.3) : Colors.transparent,
             width: 1,
           ),
         ),

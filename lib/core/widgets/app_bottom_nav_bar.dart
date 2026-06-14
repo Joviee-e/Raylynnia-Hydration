@@ -44,7 +44,7 @@ class AppBottomNavBar extends StatelessWidget {
         child: Container(
           height: 64 + bottomPadding + 8,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.75),
+            color: Colors.white.withValues(alpha: 0.75),
             borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
             boxShadow: const [
               BoxShadow(
@@ -54,7 +54,7 @@ class AppBottomNavBar extends StatelessWidget {
               ),
             ],
             border: Border.all(
-              color: AppColors.outlineVariant.withOpacity(0.15),
+              color: AppColors.outlineVariant.withValues(alpha: 0.15),
               width: 0.5,
             ),
           ),
@@ -154,7 +154,7 @@ class _NavBarItemState extends State<_NavBarItem> with SingleTickerProviderState
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           decoration: BoxDecoration(
             color: widget.isActive
-                ? AppColors.primaryContainer.withOpacity(0.5)
+                ? AppColors.primaryContainer.withValues(alpha: 0.5)
                 : Colors.transparent,
             borderRadius: BorderRadius.circular(9999),
           ),
