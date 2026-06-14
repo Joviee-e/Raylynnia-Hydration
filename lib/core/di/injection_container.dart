@@ -2,6 +2,8 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../data/datasources/interfaces/i_user_profile_datasource.dart';
+import '../../data/datasources/interfaces/i_hydration_log_datasource.dart';
 import '../../data/datasources/local/schedule_local_datasource.dart';
 import '../../data/datasources/local/user_profile_local_datasource.dart';
 import '../../data/datasources/local/hydration_log_local_datasource.dart';
@@ -52,14 +54,14 @@ Future<void> setupDependencies() async {
     );
   }
 
-  if (!getIt.isRegistered<UserProfileLocalDataSource>()) {
-    getIt.registerLazySingleton<UserProfileLocalDataSource>(
+  if (!getIt.isRegistered<IUserProfileLocalDataSource>()) {
+    getIt.registerLazySingleton<IUserProfileLocalDataSource>(
       () => UserProfileLocalDataSource(getIt<SharedPreferences>()),
     );
   }
 
-  if (!getIt.isRegistered<HydrationLogLocalDataSource>()) {
-    getIt.registerLazySingleton<HydrationLogLocalDataSource>(
+  if (!getIt.isRegistered<IHydrationLogLocalDataSource>()) {
+    getIt.registerLazySingleton<IHydrationLogLocalDataSource>(
       () => HydrationLogLocalDataSource(),
     );
   }
@@ -79,13 +81,13 @@ Future<void> setupDependencies() async {
 
   if (!getIt.isRegistered<IUserProfileRepository>()) {
     getIt.registerLazySingleton<IUserProfileRepository>(
-      () => UserProfileRepositoryImpl(getIt<UserProfileLocalDataSource>()),
+      () => UserProfileRepositoryImpl(getIt<IUserProfileLocalDataSource>()),
     );
   }
 
   if (!getIt.isRegistered<IHydrationLogRepository>()) {
     getIt.registerLazySingleton<IHydrationLogRepository>(
-      () => HydrationLogRepositoryImpl(getIt<HydrationLogLocalDataSource>()),
+      () => HydrationLogRepositoryImpl(getIt<IHydrationLogLocalDataSource>()),
     );
   }
 

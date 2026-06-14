@@ -21,7 +21,7 @@ class OnboardingState {
     this.reminderIntervalMinutes = 60,
     this.currentStep = 0,
     this.isLoading = false,
-    this.error = null,
+    this.error,
   });
 
   final String name;

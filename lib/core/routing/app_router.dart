@@ -4,6 +4,9 @@ import '../di/injection_container.dart';
 import '../../domain/usecases/get_user_profile_usecase.dart';
 import '../../features/onboarding/presentation/screens/onboarding_flow_screen.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
+import '../../features/history/presentation/screens/history_screen.dart';
+import '../../features/user_profile/presentation/screens/profile_screen.dart';
+import '../../features/scheduling_engine/presentation/screens/schedule_settings_screen.dart';
 import 'route_names.dart';
 
 abstract final class AppRouter {
@@ -33,6 +36,24 @@ abstract final class AppRouter {
         path: RouteNames.home,
         builder: (BuildContext context, GoRouterState state) {
           return const HomeScreen();
+        },
+      ),
+      GoRoute(
+        path: RouteNames.history,
+        builder: (BuildContext context, GoRouterState state) {
+          return const HistoryScreen();
+        },
+      ),
+      GoRoute(
+        path: RouteNames.profile,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ProfileScreen();
+        },
+      ),
+      GoRoute(
+        path: RouteNames.scheduleSettings,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ScheduleSettingsScreen();
         },
       ),
     ],
