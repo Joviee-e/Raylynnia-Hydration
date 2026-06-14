@@ -1,7 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/di/injection_container.dart';
 import '../../../../domain/entities/user_profile.dart';
 import '../../../../domain/entities/user_schedule_preferences.dart';
 import '../../../../domain/entities/reminder_schedule.dart';
+import '../../../../domain/repositories/i_user_profile_repository.dart';
 import '../../../../domain/usecases/get_user_profile_usecase.dart';
 import '../../../../domain/usecases/save_user_profile_usecase.dart';
 import '../../../../domain/usecases/compute_reminder_schedule_usecase.dart';
@@ -64,7 +66,12 @@ class ProfileViewModel extends StateNotifier<ProfileState> {
     state = state.copyWith(isLoading: true, clearError: true);
     try {
       final profile = await getUserProfileUseCase.execute();
-      state = state.copyWith(userProfile: profile, isLoading: false);
+      final preferences = await getIt<IUserProfileRepository>().getPreferences();
+      state = state.copyWith(
+        userProfile: profile,
+        preferences: preferences,
+        isLoading: false,
+      );
     } catch (e) {
       state = state.copyWith(
         error: 'Failed to load profile: ${e.toString()}',

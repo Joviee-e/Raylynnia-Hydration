@@ -1,7 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/di/injection_container.dart';
 import '../../../../domain/entities/user_profile.dart';
 import '../../../../domain/entities/hydration_log.dart';
 import '../../../../domain/entities/reminder_schedule.dart';
+import '../../../../domain/repositories/i_user_profile_repository.dart';
 import '../../../../domain/usecases/get_user_profile_usecase.dart';
 import '../../../../domain/usecases/log_hydration_intake_usecase.dart';
 import '../../../../domain/usecases/get_daily_history_usecase.dart';
@@ -88,14 +90,26 @@ class HomeViewModel extends StateNotifier<HomeState> {
         state = state.copyWith(error: 'No user profile found', isLoading: false);
         return;
       }
-      state = state.copyWith(userProfile: profile);
 
       // Load today's logs
       final today = DateTime.now();
       final summary = await getDailyHistoryUseCase.execute(today);
+
+      // Load preferences & compute today's schedule
+      final preferences = await getIt<IUserProfileRepository>().getPreferences();
+      ReminderSchedule? todaySchedule;
+      if (preferences != null) {
+        todaySchedule = computeReminderScheduleUseCase.execute(
+          dayAnchor: today,
+          preferences: preferences,
+          isWeekend: today.weekday == DateTime.saturday || today.weekday == DateTime.sunday,
+        );
+      }
       
       state = state.copyWith(
+        userProfile: profile,
         todayLogs: summary?.logs ?? [],
+        todaySchedule: todaySchedule,
         isLoading: false,
       );
     } catch (e) {
